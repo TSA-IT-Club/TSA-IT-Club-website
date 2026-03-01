@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download workshop notes, guides, and project templates from TSA IT Club.">
+    <title>Resources | TSA IT Club</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-logo"><i class="fa-solid fa-code"></i></div>
+            <h2>TSA <span class="gradient-text">IT Club</span></h2>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Background -->
+    <div class="glow-container">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="TSA IT Club Logo" class="club-logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="resources.html" class="active-page">Resources</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                </li>
+                <li><a href="index.html#contact" class="btn-primary-sm">Join Us</a></li>
+            </ul>
+            <div class="hamburger" role="button" tabindex="0" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Resources Section -->
+    <section id="resources" class="section page-hero">
+        <div class="section-header reveal">
+            <h2>Club <span class="gradient-text">Resources</span></h2>
+            <p>Download workshop notes, guides, and project templates.</p>
+        </div>
+        <div class="resources-grid reveal-stagger">
+            <div class="resource-card glass-panel">
+                <div class="resource-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                <div class="resource-info">
+                    <h4>React Fundamentals</h4>
+                    <p>Complete handbook for our 4-week frontend workshop.</p>
+                </div>
+                <a href="#" class="btn-icon-link"><i class="fa-solid fa-download"></i></a>
+            </div>
+            <div class="resource-card glass-panel">
+                <div class="resource-icon"><i class="fa-solid fa-code"></i></div>
+                <div class="resource-info">
+                    <h4>Python Starter Kit</h4>
+                    <p>Boilerplate code for AI and Automation projects.</p>
+                </div>
+                <a href="#" class="btn-icon-link"><i class="fa-solid fa-download"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-sections">
+                <div class="footer-brand">
+                    <img src="logo.png" alt="TSA IT Club Logo" class="club-logo-img">
+                    <p>Innovating the future, one line of code at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Tech Insights</a></li>
+                        <li><a href="events.html">Upcoming Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast-container"></div>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
