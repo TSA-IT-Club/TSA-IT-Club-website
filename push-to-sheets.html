@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Push to Google Sheets — TSA IT Club Dev Tool</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="images/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* ── Base ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Outfit", sans-serif;
+        background: #0d0d0d;
+        color: #e2e8f0;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      /* ── Card ── */
+      .card {
+        max-width: 680px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+        backdrop-filter: blur(10px);
+      }
+      .badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        margin-bottom: 1.2rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 0.4rem;
+      }
+      h1 span {
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .subtitle {
+        color: rgba(226, 232, 240, 0.6);
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      /* ── Status info boxes ── */
+      .info-box {
+        background: rgba(59, 130, 246, 0.08);
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+        font-size: 0.88rem;
+        color: #93c5fd;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+      .info-box strong {
+        color: #60a5fa;
+      }
+
+      /* ── Section list ── */
+      .sections {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      .section-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 0.75rem;
+        padding: 0.85rem 1.2rem;
+      }
+      .section-name {
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      .section-count {
+        font-size: 0.8rem;
+        color: rgba(226, 232, 240, 0.5);
+      }
+      .section-status {
+        font-size: 0.78rem;
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+      .status-pending {
+        background: rgba(245, 158, 11, 0.15);
+        color: #fbbf24;
+      }
+      .status-ok {
+        background: rgba(34, 197, 94, 0.15);
+        color: #4ade80;
+      }
+      .status-error {
+        background: rgba(239, 68, 68, 0.15);
+        color: #f87171;
+      }
+      .status-skipped {
+        background: rgba(148, 163, 184, 0.12);
+        color: #94a3b8;
+      }
+
+      /* ── Button ── */
+      .btn-push {
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        border-radius: 0.75rem;
+        font-family: "Outfit", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        color: #fff;
+        transition:
+          opacity 0.2s,
+          transform 0.15s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+      }
+      .btn-push:hover:not(:disabled) {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      .btn-push:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      /* ── Log ── */
+      .log-box {
+        margin-top: 1.5rem;
+        background: #000;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 0.75rem;
+        padding: 1rem 1.2rem;
+        font-family: "Courier New", monospace;
+        font-size: 0.82rem;
+        color: #64c967;
+        max-height: 220px;
+        overflow-y: auto;
+        display: none;
+      }
+      .log-box.visible {
+        display: block;
+      }
+      .log-line {
+        margin-bottom: 0.3rem;
+      }
+      .log-line.err {
+        color: #f87171;
+      }
+      .log-line.warn {
+        color: #fbbf24;
+      }
+      .log-line.info {
+        color: #60a5fa;
+      }
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 0.85rem;
+        color: rgba(226, 232, 240, 0.4);
+        text-decoration: none;
+      }
+      .back-link:hover {
+        color: rgba(226, 232, 240, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="badge">Developer Tool</div>
+      <h1>Push to <span>Google Sheets</span></h1>
+      <p class="subtitle">
+        This tool reads the data from <strong>data.js</strong> and pushes it to
+        your connected Google Sheets, keeping the sheet in sync with the code.
+        <br /><br />
+        <strong>⚠️ Warning:</strong> This will <strong>overwrite</strong> the
+        current content of each Sheet tab. Make sure you want to replace the
+        sheet data with what's in data.js before clicking Push.
+      </p>
+
+      <div class="info-box" id="cfg-status">Checking sheets-config.js...</div>
+
+      <div class="sections" id="sections-list">
+        <!-- Populated by JS -->
+      </div>
+
+      <button class="btn-push" id="push-btn" disabled>
+        ⬆ Push All to Google Sheets
+      </button>
+
+      <div class="log-box" id="log-box"></div>
+
+      <a href="index.html" class="back-link">← Back to website</a>
+    </div>
+
+    <!-- Load config and data files -->
+    <script src="js/sheets-config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/sheets-sync.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+      // ── Init ─────────────────────────────────────────────
+      const SECTIONS = ["events", "blog", "projects", "resources", "team"];
+      const statusEls = {};
+
+      function log(msg, type) {
+        const box = document.getElementById("log-box");
+        box.classList.add("visible");
+        const line = document.createElement("div");
+        line.className = "log-line " + (type || "");
+        line.textContent = "[" + new Date().toLocaleTimeString() + "] " + msg;
+        box.appendChild(line);
+        box.scrollTop = box.scrollHeight;
+      }
+
+      function setStatus(section, text, cls) {
+        const el = statusEls[section];
+        if (el) {
+          el.textContent = text;
+          el.className = "section-status status-" + cls;
+        }
+      }
+
+      // ── Build section list ────────────────────────────────
+      function buildUI() {
+        const list = document.getElementById("sections-list");
+        const cfgBox = document.getElementById("cfg-status");
+        const pushBtn = document.getElementById("push-btn");
+
+        const cfg =
+          typeof SHEETS_CONFIG !== "undefined"
+            ? SHEETS_CONFIG
+            : { enabled: false };
+
+        if (!cfg.enabled || !cfg.scriptUrl || cfg.scriptUrl === "YOUR-SCRIPT-URL") {
+          cfgBox.innerHTML =
+            "🔴 <strong>Not configured yet.</strong><br>" +
+            "Open <code>sheets-config.js</code>, paste your Google Apps Script URL as <code>scriptUrl</code>, " +
+            "then change <code>enabled: false</code> → <code>enabled: true</code>.";
+          cfgBox.style.borderColor = "rgba(239,68,68,0.4)";
+          cfgBox.style.color = "#f87171";
+          cfgBox.style.background = "rgba(239,68,68,0.06)";
+        } else {
+          cfgBox.innerHTML =
+            "✅ <strong>Connected.</strong> Google Apps Script enabled. " +
+            "Click Push to sync data.js → Google Sheets.";
+          cfgBox.style.borderColor = "rgba(34,197,94,0.3)";
+          cfgBox.style.color = "#4ade80";
+          cfgBox.style.background = "rgba(34,197,94,0.06)";
+          pushBtn.disabled = false;
+        }
+
+        list.innerHTML = "";
+        SECTIONS.forEach(function (sec) {
+          const data =
+            typeof siteData !== "undefined" && Array.isArray(siteData[sec])
+              ? siteData[sec]
+              : [];
+          const row = document.createElement("div");
+          row.className = "section-row";
+          row.innerHTML =
+            '<div><span class="section-name">' +
+            sec.charAt(0).toUpperCase() +
+            sec.slice(1) +
+            "</span></div>" +
+            '<span class="section-count">' +
+            data.length +
+            " item" +
+            (data.length !== 1 ? "s" : "") +
+            " in data.js</span>" +
+            '<span class="section-status status-pending" id="status-' +
+            sec +
+            '">Pending</span>';
+          list.appendChild(row);
+          statusEls[sec] = document.getElementById("status-" + sec);
+
+          if (!cfg.enabled) setStatus(sec, "Disabled", "skipped");
+        });
+      }
+
+      // ── Push All ─────────────────────────────────────────
+      document
+        .getElementById("push-btn")
+        .addEventListener("click", function () {
+          const btn = this;
+          btn.disabled = true;
+          btn.textContent = "⏳ Pushing...";
+          log("Starting push of all sections...", "info");
+
+          let done = 0;
+          let errors = 0;
+
+          SECTIONS.forEach(function (sec) {
+            const data =
+              typeof siteData !== "undefined" && Array.isArray(siteData[sec])
+                ? siteData[sec]
+                : [];
+            setStatus(sec, "Pushing...", "pending");
+            log("Pushing " + sec + " (" + data.length + " rows)...", "");
+
+            window.SheetSync.pushSection(
+              sec,
+              data,
+              function () {
+                // onDone
+                done++;
+                setStatus(sec, "✓ Done", "ok");
+                log(sec + " pushed successfully!", "");
+                checkDone();
+              },
+              function (err) {
+                // onError
+                done++;
+                errors++;
+                setStatus(sec, "✗ Error", "error");
+                log("ERROR pushing " + sec + ": " + err.message, "err");
+                checkDone();
+              },
+            );
+          });
+
+          function checkDone() {
+            if (done === SECTIONS.length) {
+              btn.disabled = false;
+              btn.textContent = "⬆ Push All to Google Sheets";
+              if (errors === 0) {
+                log("All sections pushed successfully! ✅", "info");
+              } else {
+                log(
+                  errors + " section(s) failed. Check the errors above.",
+                  "warn",
+                );
+              }
+            }
+          }
+        });
+
+      // ── Run ──────────────────────────────────────────────
+      buildUI();
+    </script>
+  </body>
+</html>
