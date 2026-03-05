@@ -128,13 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. Modals Logic
-    const modalTriggers = document.querySelectorAll('.about-card, .team-card, .board-card, .project-card, #open-join-modal');
+    const modalTriggers = document.querySelectorAll('.about-card, .team-card, .board-card, .project-card, [data-modal]');
     const modals = document.querySelectorAll('.modal-overlay');
     const closeBtns = document.querySelectorAll('.modal-close');
 
     // Open Modal (standard card triggers)
     modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', () => {
+        trigger.addEventListener('click', (e) => {
+            // If it's a button/link inside the nav, we shouldn't implicitly let it jump the page
+            if (trigger.tagName === 'A') e.preventDefault();
+            
             const modalId = trigger.getAttribute('data-modal');
             const targetModal = document.getElementById(modalId);
             if (targetModal) {
@@ -144,6 +147,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Check URL hash for modal deep-linking (e.g. from other pages clicking Join Us)
+    if (window.location.hash === '#join') {
+        const joinModal = document.getElementById('join-modal');
+        if (joinModal) {
+            joinModal.classList.add('active');
+            document.body.classList.add('modal-open');
+            document.body.style.overflow = 'hidden';
+            
+            // Clean up the URL
+            history.replaceState(null, null, window.location.pathname);
+        }
+    }
 
     // Mobile member list rows — tap to open profile modal
     document.querySelectorAll('.mobile-member-row').forEach(row => {

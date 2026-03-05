@@ -1338,18 +1338,26 @@ footer {
 
 .modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   border: none;
+  border-radius: 50%;
   color: var(--text-muted);
   font-size: 1.5rem;
   cursor: pointer;
+  z-index: 20;
   transition: var(--transition);
 }
 
 .modal-close:hover {
   color: var(--secondary);
+  background: rgba(255, 255, 255, 0.1);
   transform: rotate(90deg);
 }
 
@@ -2295,10 +2303,11 @@ footer {
     padding: 16px 20px;
     transform: translateY(-120%);
     opacity: 0;
-    pointer-events: none;
+    visibility: hidden;
     transition:
       transform 0.4s ease,
-      opacity 0.4s ease;
+      opacity 0.4s ease,
+      visibility 0.4s ease;
     gap: 4px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border-bottom: 1px solid var(--glass-border);
@@ -2308,7 +2317,7 @@ footer {
   .nav-links.active {
     transform: translateY(0);
     opacity: 1;
-    pointer-events: all;
+    visibility: visible;
   }
 
   .nav-links li {
