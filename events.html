@@ -1,218 +1,208 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Upcoming events, workshops, and hackathons by the TSA IT Club."
+    />
+    <title>Events | TSA IT Club</title>
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Upcoming events, workshops, and hackathons by the TSA IT Club." />
-  <title>Events | TSA IT Club</title>
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/chatbot.css" />
-</head>
-
-<body>
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="loader-content">
-      <div class="loader-logo"><i class="fa-solid fa-code"></i></div>
-      <h2>TSA <span class="gradient-text">IT Club</span></h2>
-      <div class="loader-bar"></div>
-    </div>
-  </div>
-
-  <!-- Background -->
-  <div class="glow-container">
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-  </div>
-
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="nav-content">
-      <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="events.html" class="active-page">Events</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li>
-          <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark/Light Mode">
-            <i class="fa-solid fa-sun"></i>
-          </button>
-        </li>
-        <li>
-          <a href="index.html#contact" class="btn-primary-sm">Join Us</a>
-        </li>
-      </ul>
-      <div class="hamburger" role="button" tabindex="0" aria-label="Toggle Navigation Menu">
-        <i class="fa-solid fa-bars"></i>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader-content">
+        <div class="loader-logo"><i class="fa-solid fa-code"></i></div>
+        <h2>TSA <span class="gradient-text">IT Club</span></h2>
+        <div class="loader-bar"></div>
       </div>
     </div>
-  </nav>
 
-  <!-- Page Header -->
-  <section class="section page-hero">
-    <div class="section-header reveal">
-      <h2>Upcoming <span class="gradient-text">Events</span></h2>
-      <p>Join us to learn, build, and connect.</p>
+    <!-- Background -->
+    <div class="glow-container">
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
     </div>
-    <div id="events-container" class="events-container reveal"></div>
-  </section>
 
-  <footer>
-    <div class="footer-content">
-      <div class="footer-sections">
-        <div class="footer-brand">
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-content">
+        <a href="index.html" class="logo">
           <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
-          <p>Innovating the future, one line of code at a time.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Tech Insights</a></li>
-            <li><a href="events.html">Upcoming Events</a></li>
-            <li><a href="resources.html">Resources</a></li>
-          </ul>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html" class="active-page">Events</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li>
+            <button
+              id="theme-toggle"
+              class="theme-btn"
+              aria-label="Toggle Dark/Light Mode"
+            >
+              <i class="fa-solid fa-sun"></i>
+            </button>
+          </li>
+          <li>
+            <a href="index.html#contact" class="btn-primary-sm">Join Us</a>
+          </li>
+        </ul>
+        <div
+          class="hamburger"
+          role="button"
+          tabindex="0"
+          aria-label="Toggle Navigation Menu"
+        >
+          <i class="fa-solid fa-bars"></i>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
-        <div class="footer-social">
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-discord"></i></a>
-          <a href="#"><i class="fa-brands fa-twitter"></i></a>
-        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="section page-hero">
+      <div class="section-header reveal">
+        <h2>Upcoming <span class="gradient-text">Events</span></h2>
+        <p>Join us to learn, build, and connect.</p>
       </div>
-    </div>
-  </footer>
+      <div id="events-container" class="events-container reveal"></div>
+    </section>
 
-  <!-- Toast Container -->
-  <div id="toast-container"></div>
-
-  <!-- Back to Top -->
-  <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-
-  <script src="js/data.js"></script>
-  <script src="js/sheets-config.js"></script>
-  <script src="js/sheets-sync.js"></script>
-  <script>
-    // ── Smart date formatter — handles ISO dates from Google Sheets ──
-    function formatDate(raw) {
-      if (!raw || raw === "Date TBA") return raw;
-      // If it already looks human-readable (contains month name), return as-is
-      if (/[a-zA-Z]/.test(raw) && !/T\d{2}:/.test(raw)) return raw;
-      // Try parsing as Date (catches ISO 8601 strings)
-      var d = new Date(raw);
-      if (isNaN(d.getTime())) return raw; // unparseable, return as-is
-      var months = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"];
-      return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
-    }
-
-    // ── Render events via SheetSync (falls back to data.js automatically) ──
-    document.addEventListener("DOMContentLoaded", function () {
-      const container = document.getElementById("events-container");
-      if (!container) return;
-
-      // Show a loading skeleton while fetching
-      container.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading events...</p>';
-
-      window.SheetSync.load("events", function (events) {
-        if (!events || events.length === 0) {
-          container.innerHTML =
-            '<div style="text-align:center;padding:3rem 1rem;">' +
-            '<i class="fa-regular fa-calendar-xmark" style="font-size:3rem;opacity:0.3;margin-bottom:1rem;display:block;"></i>' +
-            '<p style="opacity:0.6;font-size:1.1rem;">No events planned currently.</p>' +
-            '<p style="opacity:0.4;font-size:0.85rem;margin-top:0.5rem;">Check back soon — we\u0027re always cooking something up!</p>' +
-            '</div>';
-          return;
-        }
-
-        container.innerHTML = events
-          .map(function (e, index) {
-            const regLink = e.registerLink || e.registrationLink || '';
-            const registerBtn = e.isOpen === true || String(e.isOpen).toLowerCase() === 'true'
-              ? (regLink
-                ? '<a href="' + regLink + '" target="_blank" class="event-btn">Register Now</a>'
-                : '<span class="event-btn disabled">Registration Closed</span>')
-              : '<span class="event-btn disabled">Registration Closed</span>';
-
-            // Ensure safe access + smart date formatting
-            const eTitle = e.title || "Untitled Event";
-            const eDate = formatDate(e.date || "Date TBA");
-            const eDesc = e.description || "";
-            const eTime = e.time || "Time TBA";
-            const eLoc = e.location || "Location TBA";
-
-            const delay = index * 0.15;
-
-            return (
-              '<div class="event-card" style="animation-delay: ' + delay + 's">' +
-              '<div class="event-header">' +
-              '<div class="event-title-group">' +
-              '<h2>' + eTitle + '</h2>' +
-              '<div class="event-location">' +
-              '<span><i class="fa-solid fa-location-dot"></i></span> ' + eLoc +
-              '</div>' +
-              '</div>' +
-              '<div class="event-date-badge">' +
-              '<span class="date">' + eDate + '</span>' +
-              '<span class="time">' + eTime + '</span>' +
-              '</div>' +
-              '</div>' +
-              '<div class="event-description">' +
-              '<p>' + eDesc + '</p>' +
-              '</div>' +
-              '<div class="event-footer">' +
-              registerBtn +
-              '</div>' +
-              '</div>'
-            );
-          })
-          .join("");
-      });
-    });
-  </script>
-  <script src="js/script.js"></script>
-
-  <!-- ── TSA IT Club Chatbot ── -->
-  <div id="tsa-chatbot">
-    <div id="chatbot-window" class="chatbot-window" role="dialog" aria-label="TSA IT Club Chat Assistant">
-      <div class="chatbot-header">
-        <div class="chatbot-header-info">
-          <div class="chatbot-avatar-sm"><i class="fa-solid fa-robot"></i></div>
-          <div>
-            <h4 id="chatbot-name">TSA Assistant</h4>
-            <span class="chatbot-status"><span class="chatbot-status-dot"></span> Online</span>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-sections">
+          <div class="footer-brand">
+            <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
+            <p>Innovating the future, one line of code at a time.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog.html">Tech Insights</a></li>
+              <li><a href="events.html">Upcoming Events</a></li>
+              <li><a href="resources.html">Resources</a></li>
+            </ul>
           </div>
         </div>
-        <button class="chatbot-close-btn" id="chatbot-close" aria-label="Close Chat">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <div class="footer-bottom">
+          <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-discord"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
       </div>
-      <div class="chatbot-messages" id="chatbot-messages"></div>
-      <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
-      <div class="chatbot-input-area">
-        <input type="text" id="chatbot-input" placeholder="Ask me anything..." autocomplete="off" />
-        <button id="chatbot-send" aria-label="Send Message"><i class="fa-solid fa-paper-plane"></i></button>
-      </div>
-    </div>
-    <button id="chatbot-toggle" class="chatbot-toggle-btn" aria-label="Open Chat Assistant">
-      <i class="fa-solid fa-comment-dots chatbot-icon-open"></i>
-      <i class="fa-solid fa-xmark chatbot-icon-close"></i>
-    </button>
-  </div>
-  <script src="js/chatbot.js"></script>
-</body>
+    </footer>
 
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Back to Top -->
+    <button
+      id="back-to-top"
+      class="back-to-top"
+      aria-label="Scroll back to top"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="js/data.js"></script>
+    <script src="js/sheets-config.js"></script>
+    <script src="js/sheets-sync.js"></script>
+    <script>
+      // ── Smart date formatter — handles ISO dates from Google Sheets ──
+      function formatDate(raw) {
+        if (!raw || raw === "Date TBA") return raw;
+        // If it already looks human-readable (contains month name), return as-is
+        if (/[a-zA-Z]/.test(raw) && !/T\d{2}:/.test(raw)) return raw;
+        // Try parsing as Date (catches ISO 8601 strings)
+        var d = new Date(raw);
+        if (isNaN(d.getTime())) return raw; // unparseable, return as-is
+        var months = ["January","February","March","April","May","June",
+                      "July","August","September","October","November","December"];
+        return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+      }
+
+      // ── Render events via SheetSync (falls back to data.js automatically) ──
+      document.addEventListener("DOMContentLoaded", function () {
+        const container = document.getElementById("events-container");
+        if (!container) return;
+
+        // Show a loading skeleton while fetching
+        container.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading events...</p>';
+
+        window.SheetSync.load("events", function (events) {
+          if (!events || events.length === 0) {
+            container.innerHTML =
+              '<div style="text-align:center;padding:3rem 1rem;">' +
+              '<i class="fa-regular fa-calendar-xmark" style="font-size:3rem;opacity:0.3;margin-bottom:1rem;display:block;"></i>' +
+              '<p style="opacity:0.6;font-size:1.1rem;">No events planned currently.</p>' +
+              '<p style="opacity:0.4;font-size:0.85rem;margin-top:0.5rem;">Check back soon — we\u0027re always cooking something up!</p>' +
+              '</div>';
+            return;
+          }
+
+          container.innerHTML = events
+            .map(function (e, index) {
+              const regLink = e.registerLink || e.registrationLink || '';
+              const registerBtn = e.isOpen === true || String(e.isOpen).toLowerCase() === 'true'
+                ? (regLink
+                    ? '<a href="' + regLink + '" target="_blank" class="event-btn">Register Now</a>'
+                    : '<span class="event-btn disabled">Registration Closed</span>')
+                : '<span class="event-btn disabled">Registration Closed</span>';
+
+              // Ensure safe access + smart date formatting
+              const eTitle = e.title || "Untitled Event";
+              const eDate = formatDate(e.date || "Date TBA");
+              const eDesc = e.description || "";
+              const eTime = e.time || "Time TBA";
+              const eLoc = e.location || "Location TBA";
+
+              const delay = index * 0.15;
+
+              return (
+                '<div class="event-card" style="animation-delay: ' + delay + 's">' +
+                  '<div class="event-header">' +
+                    '<div class="event-title-group">' +
+                      '<h2>' + eTitle + '</h2>' +
+                      '<div class="event-location">' +
+                        '<span><i class="fa-solid fa-location-dot"></i></span> ' + eLoc +
+                      '</div>' +
+                    '</div>' +
+                    '<div class="event-date-badge">' +
+                      '<span class="date">' + eDate + '</span>' +
+                      '<span class="time">' + eTime + '</span>' +
+                    '</div>' +
+                  '</div>' +
+                  '<div class="event-description">' +
+                    '<p>' + eDesc + '</p>' +
+                  '</div>' +
+                  '<div class="event-footer">' +
+                    registerBtn +
+                  '</div>' +
+                '</div>'
+              );
+            })
+            .join("");
+        });
+      });
+    </script>
+    <script src="js/script.js"></script>
+  </body>
 </html>

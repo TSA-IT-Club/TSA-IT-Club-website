@@ -83,6 +83,11 @@
 
   // ── Core: Load data ──────────────────────────────────────
 
+  /**
+   * SheetSync.load(section, callback)
+   * @param {string}   section  - 'events'|'blog'|'projects'|'resources'|'team'
+   * @param {Function} callback - called with (dataArray)
+   */
   function load(section, callback) {
     var cfg = (typeof SHEETS_CONFIG !== "undefined") ? SHEETS_CONFIG : { enabled: false };
 
@@ -91,23 +96,6 @@
       return;
     }
 
-    var cacheKey = "tsa_cache_" + section;
-    var cachedData = localStorage.getItem(cacheKey);
-
-    // IMMEDIATELY render cached data if available
-    if (cachedData) {
-      try {
-        var parsed = JSON.parse(cachedData);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          callback(parsed);
-          // Don't log loading state or wait, just return visual immediately
-        }
-      } catch (e) {
-        console.warn("Error parsing cache for", section, e);
-      }
-    }
-
-    // Always fetch latest data in background silently to keep cache fresh
     var url = cfg.scriptUrl + "?sheet=" + tabName(section);
 
     fetch(url)
@@ -117,24 +105,17 @@
       })
       .then(function (rows) {
         if (!Array.isArray(rows) || rows.length === 0) {
-          if (!cachedData) callback(getLocalData(section));
+          callback(getLocalData(section));
           return;
         }
         var cleaned = filterEmpty(section, rows).map(function (r) {
           return normaliseRow(section, r);
         });
-        
-        var newStr = JSON.stringify(cleaned);
-        
-        // If the new data is exactly the same as cached data, do nothing.
-        if (newStr === cachedData) return;
-
-        // Otherwise, save to cache and re-render UI with latest
-        localStorage.setItem(cacheKey, newStr);
         callback(cleaned);
       })
       .catch(function (err) {
-        if (!cachedData) callback(getLocalData(section));
+        console.warn("[SheetSync] Failed to fetch '" + section + "'. Falling back to data.js.", err);
+        callback(getLocalData(section));
       });
   }
 

@@ -1270,7 +1270,6 @@ footer {
     /* Keep it within screen bounds */
     overflow-y: auto;
     /* Enable scrolling for long content */
-    overscroll-behavior: contain; /* Prevents background scroll chaining */
     border-radius: 16px;
     border: 1px solid var(--glass-border);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
@@ -1301,26 +1300,18 @@ footer {
 
 .modal-close {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 20px;
+    right: 20px;
     background: transparent;
     border: none;
-    border-radius: 50%;
     color: var(--text-muted);
     font-size: 1.5rem;
     cursor: pointer;
-    z-index: 20;
     transition: var(--transition);
 }
 
 .modal-close:hover {
     color: var(--secondary);
-    background: rgba(255, 255, 255, 0.1);
     transform: rotate(90deg);
 }
 
@@ -2275,8 +2266,8 @@ footer {
         padding: 16px 20px;
         transform: translateY(-120%);
         opacity: 0;
-        visibility: hidden;
-        transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
+        pointer-events: none;
+        transition: transform 0.4s ease, opacity 0.4s ease;
         gap: 4px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         border-bottom: 1px solid var(--glass-border);
@@ -2286,7 +2277,7 @@ footer {
     .nav-links.active {
         transform: translateY(0);
         opacity: 1;
-        visibility: visible;
+        pointer-events: all;
     }
 
     .nav-links li {
@@ -2356,13 +2347,8 @@ footer {
         display: inline-flex;
     }
 
-    .page-hero {
-        padding-top: 100px;
-    }
-
     .section {
         padding: 40px 5%;
-        padding-top: 80px;
         overflow-x: hidden;
     }
 

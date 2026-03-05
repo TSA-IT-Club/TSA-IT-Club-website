@@ -10,23 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 0. Preloader ---
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        // Instant load
-        preloader.style.display = 'none';
-
-        /* 
-        // ----------------------------------------------------
-        // IF YOU WANT TO ADD A HARDCODED DELAY LATER (e.g. 800ms)
-        // UNCOMMENT THIS BLOCK AND COMMENT THE 'display: none' ABOVE:
-        // ----------------------------------------------------
-        // preloader.style.display = 'flex';
-        // setTimeout(() => {
-        //     preloader.style.opacity = '0';
-        //     preloader.style.visibility = 'hidden';
-        //     setTimeout(() => preloader.style.display = 'none', 500); 
-        // }, 800);
-        */
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+        }, 800);
     }
-
 
     // --- 0.5 Theme Toggle System ---
     const themeBtn = document.getElementById('theme-toggle');
@@ -143,16 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // Check URL hash for modal deep-linking (e.g. from other pages clicking Join Us)
-    if (window.location.hash === '#join') {
-        const joinModal = document.getElementById('join-modal');
-        if (joinModal) {
-            joinModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            history.replaceState(null, null, window.location.pathname);
-        }
-    }
 
     // Mobile member list rows — tap to open profile modal
     document.querySelectorAll('.mobile-member-row').forEach(row => {
@@ -350,7 +328,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     joinForm.reset();
                     // Close modal
                     document.getElementById('join-modal').classList.remove('active');
-                    document.body.classList.remove('modal-open');
                 } else {
                     throw new Error('Network response was not ok.');
                 }
@@ -620,10 +597,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToTopBtn = document.getElementById('back-to-top');
     if (backToTopBtn) {
         window.addEventListener('scroll', () => {
-            const scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
-
-            // Show button after scrolling down 300px
-            if (scrollPos > 300) {
+            // Show button after scrolling down 400px
+            if (window.scrollY > 400) {
                 backToTopBtn.classList.add('show');
             } else {
                 backToTopBtn.classList.remove('show');

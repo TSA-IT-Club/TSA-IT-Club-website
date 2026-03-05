@@ -1,191 +1,171 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tech articles, tutorials, and insights from TSA IT Club members."
+    />
+    <title>Blog | TSA IT Club</title>
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tech articles, tutorials, and insights from TSA IT Club members." />
-  <title>Blog | TSA IT Club</title>
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/chatbot.css" />
-</head>
-
-<body>
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="loader-content">
-      <div class="loader-logo"><i class="fa-solid fa-code"></i></div>
-      <h2>TSA <span class="gradient-text">IT Club</span></h2>
-      <div class="loader-bar"></div>
-    </div>
-  </div>
-
-  <!-- Background -->
-  <div class="glow-container">
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-  </div>
-
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="nav-content">
-      <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="blog.html" class="active-page">Blog</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li>
-          <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark/Light Mode">
-            <i class="fa-solid fa-sun"></i>
-          </button>
-        </li>
-        <li>
-          <a href="index.html#contact" class="btn-primary-sm">Join Us</a>
-        </li>
-      </ul>
-      <div class="hamburger" role="button" tabindex="0" aria-label="Toggle Navigation Menu">
-        <i class="fa-solid fa-bars"></i>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader-content">
+        <div class="loader-logo"><i class="fa-solid fa-code"></i></div>
+        <h2>TSA <span class="gradient-text">IT Club</span></h2>
+        <div class="loader-bar"></div>
       </div>
     </div>
-  </nav>
 
-  <!-- Blog Section -->
-  <section id="blog" class="section page-hero">
-    <div class="section-header reveal">
-      <h2>Tech <span class="gradient-text">Insights</span></h2>
-      <p>Articles, tutorials, and news from our club members.</p>
+    <!-- Background -->
+    <div class="glow-container">
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
     </div>
-    <div id="blog-grid" class="blog-grid reveal-stagger"></div>
-  </section>
 
-  <footer>
-    <div class="footer-content">
-      <div class="footer-sections">
-        <div class="footer-brand">
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-content">
+        <a href="index.html" class="logo">
           <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
-          <p>Innovating the future, one line of code at a time.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Tech Insights</a></li>
-            <li><a href="events.html">Upcoming Events</a></li>
-            <li><a href="resources.html">Resources</a></li>
-          </ul>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="blog.html" class="active-page">Blog</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li>
+            <button
+              id="theme-toggle"
+              class="theme-btn"
+              aria-label="Toggle Dark/Light Mode"
+            >
+              <i class="fa-solid fa-sun"></i>
+            </button>
+          </li>
+          <li>
+            <a href="index.html#contact" class="btn-primary-sm">Join Us</a>
+          </li>
+        </ul>
+        <div
+          class="hamburger"
+          role="button"
+          tabindex="0"
+          aria-label="Toggle Navigation Menu"
+        >
+          <i class="fa-solid fa-bars"></i>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
-        <div class="footer-social">
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-discord"></i></a>
-          <a href="#"><i class="fa-brands fa-twitter"></i></a>
-        </div>
+    </nav>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section page-hero">
+      <div class="section-header reveal">
+        <h2>Tech <span class="gradient-text">Insights</span></h2>
+        <p>Articles, tutorials, and news from our club members.</p>
       </div>
-    </div>
-  </footer>
+      <div id="blog-grid" class="blog-grid reveal-stagger"></div>
+    </section>
 
-  <div id="toast-container"></div>
-
-  <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-
-  <script src="js/data.js"></script>
-  <script src="js/sheets-config.js"></script>
-  <script src="js/sheets-sync.js"></script>
-  <script>
-    // ── Smart date formatter — handles ISO dates from Google Sheets ──
-    function formatBlogDate(raw) {
-      if (!raw) return "";
-      if (/[a-zA-Z]/.test(raw) && !/T\d{2}:/.test(raw)) return raw;
-      var d = new Date(raw);
-      if (isNaN(d.getTime())) return raw; 
-      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
-    }
-
-    // ── Render blog posts via SheetSync (falls back to data.js automatically) ──
-    document.addEventListener("DOMContentLoaded", function () {
-      const grid = document.getElementById("blog-grid");
-      if (!grid) return;
-
-      grid.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading posts...</p>';
-
-      window.SheetSync.load("blog", function (posts) {
-        if (!posts || posts.length === 0) {
-          grid.innerHTML =
-            '<div style="text-align:center;padding:3rem 1rem;">' +
-            '<i class="fa-regular fa-newspaper" style="font-size:3rem;opacity:0.3;margin-bottom:1rem;display:block;"></i>' +
-            '<p style="opacity:0.6;font-size:1.1rem;">No blog posts uploaded yet.</p>' +
-            '<p style="opacity:0.4;font-size:0.85rem;margin-top:0.5rem;">Our members are busy writing — check back soon!</p>' +
-            '</div>';
-          return;
-        }
-
-        grid.innerHTML = posts
-          .map(function (p) {
-            const defaultImg = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80";
-            return (
-              '<article class="blog-card glass-panel">' +
-              '<div class="blog-img-container">' +
-              '<img src="' + (p.image || defaultImg) + '" alt="' + (p.title || "") + '">' +
-              '<span class="blog-tag">' + (p.category || "Article") + "</span>" +
-              "</div>" +
-              '<div class="blog-body">' +
-              '<span class="blog-date">' + formatBlogDate(p.date) + "</span>" +
-              "<h3>" + (p.title || "Untitled") + "</h3>" +
-              "<p>" + (p.excerpt || "") + "</p>" +
-              (p.link && p.link !== "#" && p.link.trim() !== ""
-                ? '<a href="' + p.link + '" target="_blank" class="btn-text">Read More <i class="fa-solid fa-arrow-right"></i></a>'
-                : '<span class="btn-text" style="opacity:0.4;cursor:default;">Coming Soon</span>') +
-              "</div>" +
-              "</article>"
-            );
-          })
-          .join("");
-      });
-    });
-  </script>
-  <script src="js/script.js"></script>
-
-  <!-- ── TSA IT Club Chatbot ── -->
-  <div id="tsa-chatbot">
-    <div id="chatbot-window" class="chatbot-window" role="dialog" aria-label="TSA IT Club Chat Assistant">
-      <div class="chatbot-header">
-        <div class="chatbot-header-info">
-          <div class="chatbot-avatar-sm"><i class="fa-solid fa-robot"></i></div>
-          <div>
-            <h4 id="chatbot-name">TSA Assistant</h4>
-            <span class="chatbot-status"><span class="chatbot-status-dot"></span> Online</span>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-sections">
+          <div class="footer-brand">
+            <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
+            <p>Innovating the future, one line of code at a time.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog.html">Tech Insights</a></li>
+              <li><a href="events.html">Upcoming Events</a></li>
+              <li><a href="resources.html">Resources</a></li>
+            </ul>
           </div>
         </div>
-        <button class="chatbot-close-btn" id="chatbot-close" aria-label="Close Chat">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <div class="footer-bottom">
+          <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-discord"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
       </div>
-      <div class="chatbot-messages" id="chatbot-messages"></div>
-      <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
-      <div class="chatbot-input-area">
-        <input type="text" id="chatbot-input" placeholder="Ask me anything..." autocomplete="off" />
-        <button id="chatbot-send" aria-label="Send Message"><i class="fa-solid fa-paper-plane"></i></button>
-      </div>
-    </div>
-    <button id="chatbot-toggle" class="chatbot-toggle-btn" aria-label="Open Chat Assistant">
-      <i class="fa-solid fa-comment-dots chatbot-icon-open"></i>
-      <i class="fa-solid fa-xmark chatbot-icon-close"></i>
-    </button>
-  </div>
-  <script src="js/chatbot.js"></script>
-</body>
+    </footer>
 
+    <div id="toast-container"></div>
+
+    <button
+      id="back-to-top"
+      class="back-to-top"
+      aria-label="Scroll back to top"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="js/data.js"></script>
+    <script src="js/sheets-config.js"></script>
+    <script src="js/sheets-sync.js"></script>
+    <script>
+      // ── Render blog posts via SheetSync (falls back to data.js automatically) ──
+      document.addEventListener("DOMContentLoaded", function () {
+        const grid = document.getElementById("blog-grid");
+        if (!grid) return;
+
+        grid.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading posts...</p>';
+
+        window.SheetSync.load("blog", function (posts) {
+          if (!posts || posts.length === 0) {
+            grid.innerHTML =
+              '<div style="text-align:center;padding:3rem 1rem;">' +
+              '<i class="fa-regular fa-newspaper" style="font-size:3rem;opacity:0.3;margin-bottom:1rem;display:block;"></i>' +
+              '<p style="opacity:0.6;font-size:1.1rem;">No blog posts uploaded yet.</p>' +
+              '<p style="opacity:0.4;font-size:0.85rem;margin-top:0.5rem;">Our members are busy writing — check back soon!</p>' +
+              '</div>';
+            return;
+          }
+
+          grid.innerHTML = posts
+            .map(function (p) {
+              const defaultImg = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80";
+              return (
+                '<article class="blog-card glass-panel">' +
+                '<div class="blog-img-container">' +
+                '<img src="' + (p.image || defaultImg) + '" alt="' + (p.title || "") + '">' +
+                '<span class="blog-tag">' + (p.category || "Article") + "</span>" +
+                "</div>" +
+                '<div class="blog-body">' +
+                '<span class="blog-date">' + (p.date || "") + "</span>" +
+                "<h3>" + (p.title || "Untitled") + "</h3>" +
+                "<p>" + (p.excerpt || "") + "</p>" +
+                (p.link && p.link !== "#" && p.link.trim() !== ""
+                  ? '<a href="' + p.link + '" target="_blank" class="btn-text">Read More <i class="fa-solid fa-arrow-right"></i></a>'
+                  : '<span class="btn-text" style="opacity:0.4;cursor:default;">Coming Soon</span>') +
+                "</div>" +
+                "</article>"
+              );
+            })
+            .join("");
+        });
+      });
+    </script>
+    <script src="js/script.js"></script>
+  </body>
 </html>
