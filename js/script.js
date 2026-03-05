@@ -93,16 +93,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2.5 Auto-Scroll Mobile Nav to Active Link
     const activeLink = document.querySelector('.nav-links .active-page');
     if (activeLink && navLinks) {
-        // Small delay to ensure CSS has applied flex layout
-        setTimeout(() => {
-            // Find the parent li
+        // Wait for fonts & layout to finish rendering for accurate widths
+        window.addEventListener('load', () => {
             const parentLi = activeLink.closest('li');
             if (parentLi) {
-                // Calculate center position
-                const scrollPos = parentLi.offsetLeft - (navLinks.clientWidth / 2) + (parentLi.clientWidth / 2);
-                navLinks.scrollLeft = Math.max(0, scrollPos);
+                // Determine scroll position to center the active item
+                const centerPos = parentLi.offsetLeft - (navLinks.clientWidth / 2) + (parentLi.clientWidth / 2);
+
+                // Use smooth scrolling for a premium feel
+                navLinks.scrollTo({
+                    left: Math.max(0, centerPos),
+                    behavior: 'smooth'
+                });
             }
-        }, 50);
+        });
     }
 
     // 3. Reveal Elements on Scroll
