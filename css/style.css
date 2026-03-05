@@ -2586,9 +2586,16 @@ footer {
     }
 
     .hero-visual {
-        transform: scale(0.8);
+        transform: scale(0.7);
         margin-top: 10px;
     }
+
+    @media (max-width: 480px) {
+    .glass-panel, .glass-card {
+        background: rgba(30, 41, 59, 0.95);
+        transform: scale(0.7);
+    }
+}
 
     .board-grid {
         grid-template-columns: 1fr;
