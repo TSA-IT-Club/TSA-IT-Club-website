@@ -90,6 +90,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 2.5 Auto-Scroll Mobile Nav to Active Link
+    const activeLink = document.querySelector('.nav-links .active-page');
+    if (activeLink && navLinks) {
+        // Small delay to ensure CSS has applied flex layout
+        setTimeout(() => {
+            // Find the parent li
+            const parentLi = activeLink.closest('li');
+            if (parentLi) {
+                // Calculate center position
+                const scrollPos = parentLi.offsetLeft - (navLinks.clientWidth / 2) + (parentLi.clientWidth / 2);
+                navLinks.scrollLeft = Math.max(0, scrollPos);
+            }
+        }, 50);
+    }
+
     // 3. Reveal Elements on Scroll
     const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
 
