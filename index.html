@@ -1,698 +1,685 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Official website of the TSA IT Club. Join us to learn, build, and innovate."
-    />
-    <title>TSA IT Club</title>
-    <link rel="icon" type="image/png" href="images/logo.png" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome for icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
 
-  <body>
-    <!-- Premium Pre-loader -->
-    <div id="preloader">
-      <div class="loader-content">
-        <div class="loader-logo">
-          <i class="fa-solid fa-code"></i>
-        </div>
-        <h2>TSA <span class="gradient-text">IT Club</span></h2>
-        <div class="loader-bar"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Official website of the TSA IT Club. Join us to learn, build, and innovate." />
+  <title>TSA IT Club</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Premium Pre-loader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <i class="fa-solid fa-code"></i>
+      </div>
+      <h2>TSA <span class="gradient-text">IT Club</span></h2>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Background Elements -->
+  <div class="glow-container">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-content">
+      <a href="#" class="logo">
+        <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active-page">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li>
+          <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+        </li>
+        <li><a href="#contact" class="btn-primary-sm">Join Us</a></li>
+      </ul>
+      <div class="hamburger" role="button" tabindex="0" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
       </div>
     </div>
+  </nav>
 
-    <!-- Background Elements -->
-    <div class="glow-container">
-      <div class="glow-orb orb-1"></div>
-      <div class="glow-orb orb-2"></div>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content fade-in-up">
+      <div class="badge">Welcome to the future</div>
+      <h1>
+        Innovate. <br /><span class="gradient-text">Create.</span> Inspire.
+      </h1>
+      <p>
+        The official IT Club of TSA College. We are a community of passionate
+        developers, designers, and tech enthusiasts building tomorrow's
+        solutions today.
+      </p>
+      <div class="hero-btns">
+        <a href="events.html" class="btn-primary">Explore Events <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#about" class="btn-secondary">Learn More</a>
+      </div>
     </div>
-
-    <!-- Navigation -->
-    <nav id="navbar">
-      <div class="nav-content">
-        <a href="#" class="logo">
-          <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
-        </a>
-        <ul class="nav-links">
-          <li><a href="index.html" class="active-page">Home</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li>
-            <button
-              id="theme-toggle"
-              class="theme-btn"
-              aria-label="Toggle Dark/Light Mode"
-            >
-              <i class="fa-solid fa-sun"></i>
-            </button>
-          </li>
-          <li><a href="#contact" class="btn-primary-sm">Join Us</a></li>
-        </ul>
-        <div
-          class="hamburger"
-          role="button"
-          tabindex="0"
-          aria-label="Toggle Navigation Menu"
-        >
-          <i class="fa-solid fa-bars"></i>
+    <div class="hero-visual fade-in">
+      <div class="glass-card main-card">
+        <div class="card-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
         </div>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content fade-in-up">
-        <div class="badge">Welcome to the future</div>
-        <h1>
-          Innovate. <br /><span class="gradient-text">Create.</span> Inspire.
-        </h1>
-        <p>
-          The official IT Club of TSA College. We are a community of passionate
-          developers, designers, and tech enthusiasts building tomorrow's
-          solutions today.
-        </p>
-        <div class="hero-btns">
-          <a href="events.html" class="btn-primary"
-            >Explore Events <i class="fa-solid fa-arrow-right"></i
-          ></a>
-          <a href="#about" class="btn-secondary">Learn More</a>
-        </div>
-      </div>
-      <div class="hero-visual fade-in">
-        <div class="glass-card main-card">
-          <div class="card-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <div class="card-body">
-            <pre><code><span class="keyword">const</span> <span class="variable">tsaItClub</span> = {
+        <div class="card-body">
+          <pre><code><span class="keyword">const</span> <span class="variable">tsaItClub</span> = {
   <span class="property">passion</span>: <span class="string">"Infinite"</span>,
   <span class="property">skills</span>: [<span class="string">"Web Dev"</span>, <span class="string">"AI"</span>, <span class="string">"Cyber"</span>],
   <span class="method">innovate</span>: <span class="keyword">function</span>() {
     <span class="keyword">return</span> <span class="string">"Building the future!"</span>;
   }
 };</code></pre>
-          </div>
-        </div>
-        <div class="glass-card floating-card" id="next-event-card">
-          <i class="fa-solid fa-rocket"></i>
-          <div>
-            <h4>Next Event</h4>
-            <p id="next-event-title">Loading...</p>
-            <div id="countdown" class="countdown-timer">
-              <span id="days">00</span>d <span id="hours">00</span>h
-              <span id="minutes">00</span>m
-            </div>
-          </div>
         </div>
       </div>
-    </section>
-
-    <!-- Our Impact (Stats) Section -->
-    <section id="impact" class="section">
-      <div class="section-header reveal">
-        <h2>Our <span class="gradient-text">Impact</span></h2>
-        <p>What we've achieved so far</p>
-      </div>
-      <div class="stats-container reveal-stagger">
-        <div class="stat-card glass-panel">
-          <h3 class="stat-number" data-target="50">0</h3>
-          <p>Events Hosted</p>
-        </div>
-        <div class="stat-card glass-panel">
-          <h3 class="stat-number" data-target="200">0</h3>
-          <p>Active Members</p>
-        </div>
-        <div class="stat-card glass-panel">
-          <h3 class="stat-number" data-target="20">0</h3>
-          <p>Projects Built</p>
-        </div>
-        <div class="stat-card glass-panel">
-          <h3 class="stat-number" data-target="5">0</h3>
-          <p>Awards Won</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tech Stack Section -->
-    <section class="section">
-      <div class="tech-stack-section reveal">
-        <div class="marquee">
-          <!-- Duplicate for seamless scroll -->
-          <div class="marquee-item">
-            <i class="fa-brands fa-react"></i> React
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-js"></i> JavaScript
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-python"></i> Python
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-node-js"></i> Node.js
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-figma"></i> Figma
-          </div>
-          <div class="marquee-item">
-            <i class="fa-solid fa-database"></i> SQL/NoSQL
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-docker"></i> Docker
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-git-alt"></i> Git
-          </div>
-          <!-- Duplicate -->
-          <div class="marquee-item">
-            <i class="fa-brands fa-react"></i> React
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-js"></i> JavaScript
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-python"></i> Python
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-node-js"></i> Node.js
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-figma"></i> Figma
-          </div>
-          <div class="marquee-item">
-            <i class="fa-solid fa-database"></i> SQL/NoSQL
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-docker"></i> Docker
-          </div>
-          <div class="marquee-item">
-            <i class="fa-brands fa-git-alt"></i> Git
+      <div class="glass-card floating-card" id="next-event-card">
+        <i class="fa-solid fa-rocket"></i>
+        <div>
+          <h4>Next Event</h4>
+          <p id="next-event-title">Loading...</p>
+          <div id="countdown" class="countdown-timer">
+            <span id="days">00</span>d <span id="hours">00</span>h
+            <span id="minutes">00</span>m
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Terminal Emulator Section -->
-    <section id="terminal-section" class="section">
-      <div class="section-header reveal">
-        <h2>Interactive <span class="gradient-text">Terminal</span></h2>
-        <p>Type commands to explore. Try 'help'.</p>
-      </div>
-
-      <div class="terminal-container reveal">
-        <div class="terminal-header">
-          <div class="mac-dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <div class="terminal-title">guest@tsa-it-club: ~</div>
-        </div>
-        <div class="terminal-body" id="terminal-body">
-          <div class="terminal-output">
-            <p class="term-system">Welcome to TSA IT Club CLI v1.0.0</p>
-            <p class="term-system">
-              Type 'help' for a list of available commands.
-            </p>
-          </div>
-          <div class="terminal-input-line">
-            <span class="prompt">guest@tsa-it-club:~$</span>
-            <input
-              type="text"
-              id="terminal-input"
-              autocomplete="off"
-              spellcheck="false"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-      <div class="section-header reveal">
-        <h2>About <span class="gradient-text">Us</span></h2>
-        <p>Discover what drives our community forward.</p>
-      </div>
-      <div class="about-grid reveal">
-        <div class="about-card glass-panel" data-modal="mission-modal">
-          <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
-          <h3>Our Mission</h3>
-          <p>
-            To empower students with practical, industry-relevant tech skills
-            through hands-on projects and collaborative learning.
-          </p>
-        </div>
-        <div class="about-card glass-panel" data-modal="whatwedo-modal">
-          <div class="icon-box"><i class="fa-solid fa-users-gear"></i></div>
-          <h3>What We Do</h3>
-          <p>
-            We organize workshops, coding competitions, networking events, and
-            collaborative open-source projects.
-          </p>
-        </div>
-        <div class="about-card glass-panel" data-modal="vision-modal">
-          <div class="icon-box"><i class="fa-solid fa-lightbulb"></i></div>
-          <h3>Our Vision</h3>
-          <p>
-            To be the leading hub for technological innovation and excellence
-            within the TSA College campus and beyond.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="section">
-      <div class="section-header reveal">
-        <h2>Common <span class="gradient-text">Questions</span></h2>
-        <p>Everything you need to know about joining the IT Club.</p>
-      </div>
-      <div class="faq-container reveal">
-        <div class="faq-item glass-panel">
-          <div class="faq-question">
-            <span>Who can join the TSA IT Club?</span>
-            <i class="fa-solid fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-            Any student of TSA College with a passion for technology can join!
-            We welcome all skill levels, from complete beginners to advanced
-            developers.
-          </div>
-        </div>
-        <div class="faq-item glass-panel">
-          <div class="faq-question">
-            <span>Do I need to know how to code to join?</span>
-            <i class="fa-solid fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-            Not at all! We have departments for Graphic Designing, Video
-            Editing, and Event Management too. Plus, we provide workshops to
-            help you learn coding from scratch.
-          </div>
-        </div>
-        <div class="faq-item glass-panel">
-          <div class="faq-question">
-            <span>Is there a membership fee?</span>
-            <i class="fa-solid fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-            Membership is currently free for all TSA students. Some specialized
-            workshops or external hackathons might have nominal registration
-            costs.
-          </div>
-        </div>
-        <div class="faq-item glass-panel">
-          <div class="faq-question">
-            <span>How many events do you host annually?</span>
-            <i class="fa-solid fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer">
-            We host at least 5 major events every year, including our flagship
-            Hackathon, Tech-Talks with industry experts, and monthly coding
-            challenges.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact & Footer -->
-    <section id="contact" class="section">
-      <div class="contact-container glass-panel reveal">
-        <div class="contact-info">
-          <h2>Ready to <span class="gradient-text">Join?</span></h2>
-          <p>
-            Become a part of the most active tech community on campus. Click the
-            button below to fill out your application!
-          </p>
-          <div class="info-items">
-            <div class="info-item">
-              <i class="fa-solid fa-envelope"></i>
-              <a href="mailto:contact@tsaitclub.edu" style="color:inherit;text-decoration:none;">contact@tsaitclub.edu</a>
-            </div>
-            <div class="info-item">
-              <i class="fa-solid fa-location-dot"></i>
-              <span>TSA College, Tech Block B</span>
-            </div>
-          </div>
-        </div>
-        <div class="join-cta">
-          <div class="join-cta-icon"><i class="fa-solid fa-user-plus"></i></div>
-          <h3>Apply for Membership</h3>
-          <p>
-            Fill out a quick form and become part of our growing community of
-            tech enthusiasts.
-          </p>
-          <button
-            id="open-join-modal"
-            class="btn-primary"
-            data-modal="join-modal"
-          >
-            Apply Now <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="footer-content">
-        <div class="footer-sections">
-          <div class="footer-brand">
-            <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
-            <p>Innovating the future, one line of code at a time.</p>
-          </div>
-          <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="blog.html">Tech Insights</a></li>
-              <li><a href="events.html">Upcoming Events</a></li>
-              <li><a href="resources.html">Resources</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
-          <div class="footer-social">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-discord"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Modals -->
-    <!-- Join Us Modal (Multi-Step Wizard) -->
-    <div class="modal-overlay" id="join-modal">
-      <div class="modal-content join-modal-content">
-        <button class="modal-close" aria-label="Close Modal">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <div class="join-modal-header">
-          <i class="fa-solid fa-user-plus modal-icon"></i>
-          <h3>Join <span class="gradient-text">IT Club</span></h3>
-          <p>Start your journey with us.</p>
-        </div>
-
-        <!-- Progress Bar -->
-        <div class="wizard-progress">
-          <div class="progress-step active" data-step="1">1</div>
-          <div class="progress-line"></div>
-          <div class="progress-step" data-step="2">2</div>
-          <div class="progress-line"></div>
-          <div class="progress-step" data-step="3">3</div>
-        </div>
-
-        <form
-          id="join-form"
-          action="https://formspree.io/f/meelwjol"
-          method="POST"
-        >
-          <!-- Step 1: Personal Details -->
-          <div class="form-step active" id="step-1">
-            <div class="input-group">
-              <i class="fa-solid fa-user"></i>
-              <input type="text" name="name" placeholder="Full Name" required />
-            </div>
-            <div class="input-group">
-              <i class="fa-solid fa-envelope"></i>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                required
-              />
-            </div>
-            <div class="input-group">
-              <i class="fa-brands fa-whatsapp"></i>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone / WhatsApp Number"
-                required
-              />
-            </div>
-            <div class="wizard-btn-group">
-              <button type="button" class="btn-primary btn-next">
-                Next <i class="fa-solid fa-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Step 2: Technical Skills -->
-          <div class="form-step" id="step-2">
-            <div class="input-group">
-              <i class="fa-solid fa-code"></i>
-              <select name="primary_interest" required>
-                <option value="" disabled selected>Primary Interest</option>
-                <option value="frontend">Frontend Web Dev</option>
-                <option value="backend">Backend & APIs</option>
-                <option value="cyber">Cybersecurity</option>
-                <option value="ai">AI / Machine Learning</option>
-                <option value="other">Other / Learning</option>
-              </select>
-            </div>
-            <div class="input-group">
-              <i class="fa-solid fa-layer-group"></i>
-              <select name="experience_level" required>
-                <option value="" disabled selected>Experience Level</option>
-                <option value="beginner">Beginner (No experience)</option>
-                <option value="intermediate">
-                  Intermediate (Some projects)
-                </option>
-                <option value="advanced">Advanced (Highly skilled)</option>
-              </select>
-            </div>
-            <div class="wizard-btn-group">
-              <button type="button" class="btn-secondary btn-prev">
-                <i class="fa-solid fa-arrow-left"></i> Previous
-              </button>
-              <button type="button" class="btn-primary btn-next">
-                Next <i class="fa-solid fa-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Step 3: Motivation & Submit -->
-          <div class="form-step" id="step-3">
-            <div class="input-group">
-              <i
-                class="fa-solid fa-comment-dots"
-                style="align-self: flex-start; margin-top: 15px"
-              ></i>
-              <textarea
-                name="motivation"
-                placeholder="Why do you want to join? (Optional)"
-              ></textarea>
-            </div>
-            <div class="wizard-btn-group">
-              <button type="button" class="btn-secondary btn-prev">
-                <i class="fa-solid fa-arrow-left"></i> Previous
-              </button>
-              <button type="submit" class="btn-primary">
-                Submit Application <i class="fa-solid fa-paper-plane"></i>
-              </button>
-            </div>
-          </div>
-        </form>
       </div>
     </div>
+  </section>
 
-    <!-- Modals -->
-    <div class="modal-overlay" id="mission-modal">
-      <div class="modal-content">
-        <button class="modal-close" aria-label="Close Modal">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <i class="fa-solid fa-laptop-code modal-icon"></i>
-        <h3>Our <span class="gradient-text">Mission</span></h3>
+  <!-- Our Impact (Stats) Section -->
+  <section id="impact" class="section">
+    <div class="section-header reveal">
+      <h2>Our <span class="gradient-text">Impact</span></h2>
+      <p>What we've achieved so far</p>
+    </div>
+    <div class="stats-container reveal-stagger">
+      <div class="stat-card glass-panel">
+        <h3 class="stat-number" data-target="50">0</h3>
+        <p>Events Hosted</p>
+      </div>
+      <div class="stat-card glass-panel">
+        <h3 class="stat-number" data-target="200">0</h3>
+        <p>Active Members</p>
+      </div>
+      <div class="stat-card glass-panel">
+        <h3 class="stat-number" data-target="20">0</h3>
+        <p>Projects Built</p>
+      </div>
+      <div class="stat-card glass-panel">
+        <h3 class="stat-number" data-target="5">0</h3>
+        <p>Awards Won</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- Tech Stack Section -->
+  <section class="section">
+    <div class="tech-stack-section reveal">
+      <div class="marquee">
+        <!-- Duplicate for seamless scroll -->
+        <div class="marquee-item">
+          <i class="fa-brands fa-react"></i> React
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-js"></i> JavaScript
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-python"></i> Python
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-node-js"></i> Node.js
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-figma"></i> Figma
+        </div>
+        <div class="marquee-item">
+          <i class="fa-solid fa-database"></i> SQL/NoSQL
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-docker"></i> Docker
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-git-alt"></i> Git
+        </div>
+        <!-- Duplicate -->
+        <div class="marquee-item">
+          <i class="fa-brands fa-react"></i> React
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-js"></i> JavaScript
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-python"></i> Python
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-node-js"></i> Node.js
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-figma"></i> Figma
+        </div>
+        <div class="marquee-item">
+          <i class="fa-solid fa-database"></i> SQL/NoSQL
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-docker"></i> Docker
+        </div>
+        <div class="marquee-item">
+          <i class="fa-brands fa-git-alt"></i> Git
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terminal Emulator Section -->
+  <section id="terminal-section" class="section">
+    <div class="section-header reveal">
+      <h2>Interactive <span class="gradient-text">Terminal</span></h2>
+      <p>Type commands to explore. Try 'help'.</p>
+    </div>
+
+    <div class="terminal-container reveal">
+      <div class="terminal-header">
+        <div class="mac-dots">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="terminal-title">guest@tsa-it-club: ~</div>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-output">
+          <p class="term-system">Welcome to TSA IT Club CLI v1.0.0</p>
+          <p class="term-system">
+            Type 'help' for a list of available commands.
+          </p>
+        </div>
+        <div class="terminal-input-line">
+          <span class="prompt">guest@tsa-it-club:~$</span>
+          <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="section-header reveal">
+      <h2>About <span class="gradient-text">Us</span></h2>
+      <p>Discover what drives our community forward.</p>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-card glass-panel" data-modal="mission-modal">
+        <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
+        <h3>Our Mission</h3>
         <p>
           To empower students with practical, industry-relevant tech skills
-          through hands-on projects and collaborative learning. We bridge the
-          gap between theoretical knowledge and real-world application.
+          through hands-on projects and collaborative learning.
         </p>
-
-        <h4>The Core Philosophy</h4>
-        <p>
-          At TSA IT Club, we believe that the best way to learn technology is by
-          building it. Traditional classroom theory is essential, but
-          constructing real projects alongside peers is where true mastery
-          happens.
-        </p>
-
-        <div class="highlight-box">
-          <p>
-            <strong>Did you know?</strong> Over 80% of our active members secure
-            internships before their final year, thanks to the portfolio of
-            projects they build here.
-          </p>
-        </div>
-
-        <h4>Our Key Objectives</h4>
-        <ul>
-          <li>Provide hands-on coding experience through guided workshops.</li>
-          <li>
-            Foster a culture of continuous learning, peer-review, and
-            mentorship.
-          </li>
-          <li>
-            Connect students with industry professionals via seminars and
-            networking events.
-          </li>
-          <li>Promote open-source contributions and global collaboration.</li>
-        </ul>
       </div>
-    </div>
-
-    <div class="modal-overlay" id="whatwedo-modal">
-      <div class="modal-content">
-        <button class="modal-close" aria-label="Close Modal">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <i class="fa-solid fa-users-gear modal-icon"></i>
-        <h3>What We <span class="gradient-text">Do</span></h3>
-
+      <div class="about-card glass-panel" data-modal="whatwedo-modal">
+        <div class="icon-box"><i class="fa-solid fa-users-gear"></i></div>
+        <h3>What We Do</h3>
         <p>
-          We organize various activities throughout the academic year to keep
-          our members engaged and up-to-date with the latest tech trends. Our
-          calendar is packed with opportunities to grow.
+          We organize workshops, coding competitions, networking events, and
+          collaborative open-source projects.
         </p>
-
-        <h4>Technical Workshops</h4>
-        <p>
-          Every week, our senior members and guest speakers host deep-dive
-          sessions. Topics include:
-        </p>
-        <ul>
-          <li>Modern Web Development (React, Node.js, Next.js)</li>
-          <li>Artificial Intelligence and Machine Learning basics</li>
-          <li>
-            Cybersecurity fundamentals and capture-the-flag (CTF) strategies
-          </li>
-          <li>Cloud computing and deployment (AWS, Docker)</li>
-        </ul>
-
-        <h4>Competitions & Hackathons</h4>
-        <p>
-          We host the annual <strong>TSA Hackathon</strong>, a 48-hour coding
-          marathon where students solve real-world problems. We also organize
-          monthly algorithmic coding challenges to prepare students for
-          technical interviews.
-        </p>
-
-        <div class="highlight-box">
-          <p>
-            Join our Slack channel to participate in the "Bug of the Week"
-            bounty and win club merchandise!
-          </p>
-        </div>
       </div>
-    </div>
-
-    <div class="modal-overlay" id="vision-modal">
-      <div class="modal-content">
-        <button class="modal-close" aria-label="Close Modal">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <i class="fa-solid fa-lightbulb modal-icon"></i>
-        <h3>Our <span class="gradient-text">Vision</span></h3>
-
+      <div class="about-card glass-panel" data-modal="vision-modal">
+        <div class="icon-box"><i class="fa-solid fa-lightbulb"></i></div>
+        <h3>Our Vision</h3>
         <p>
           To be the leading hub for technological innovation and excellence
-          within the TSA College campus and beyond, producing top-tier tech
-          talent ready for the global market.
+          within the TSA College campus and beyond.
         </p>
+      </div>
+    </div>
+  </section>
 
-        <h4>Looking to the Future</h4>
-        <p>
-          We see a future where every student, regardless of their background,
-          has the resources, mentorship, and community support to turn their
-          innovative ideas into reality. By 2030, we aim to establish a
-          fully-funded student startup incubator.
-        </p>
-
-        <h4>Community Impact</h4>
-        <ul>
-          <li>Building software solutions for local college departments.</li>
-          <li>Hosting tech-literacy campaigns for non-engineering students.</li>
-          <li>
-            Creating a permanent alumni network for ongoing career support.
-          </li>
-        </ul>
-
-        <div class="highlight-box">
-          <p>
-            <strong>Join the Vision:</strong> We are actively looking for
-            visionary students to lead our upcoming AI Research Division.
-            Contact the core committee if interested!
-          </p>
+  <!-- FAQ Section -->
+  <section id="faq" class="section">
+    <div class="section-header reveal">
+      <h2>Common <span class="gradient-text">Questions</span></h2>
+      <p>Everything you need to know about joining the IT Club.</p>
+    </div>
+    <div class="faq-container reveal">
+      <div class="faq-item glass-panel">
+        <div class="faq-question">
+          <span>Who can join the TSA IT Club?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Any student of TSA College with a passion for technology can join!
+          We welcome all skill levels, from complete beginners to advanced
+          developers.
+        </div>
+      </div>
+      <div class="faq-item glass-panel">
+        <div class="faq-question">
+          <span>Do I need to know how to code to join?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Not at all! We have departments for Graphic Designing, Video
+          Editing, and Event Management too. Plus, we provide workshops to
+          help you learn coding from scratch.
+        </div>
+      </div>
+      <div class="faq-item glass-panel">
+        <div class="faq-question">
+          <span>Is there a membership fee?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Membership is currently free for all TSA students. Some specialized
+          workshops or external hackathons might have nominal registration
+          costs.
+        </div>
+      </div>
+      <div class="faq-item glass-panel">
+        <div class="faq-question">
+          <span>How many events do you host annually?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          We host at least 5 major events every year, including our flagship
+          Hackathon, Tech-Talks with industry experts, and monthly coding
+          challenges.
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Team & Project modals moved to team.html and projects.html -->
+  <!-- Contact & Footer -->
+  <section id="contact" class="section">
+    <div class="contact-container glass-panel reveal">
+      <div class="contact-info">
+        <h2>Ready to <span class="gradient-text">Join?</span></h2>
+        <p>
+          Become a part of the most active tech community on campus. Click the
+          button below to fill out your application!
+        </p>
+        <div class="info-items">
+          <div class="info-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:contact@tsaitclub.edu" style="color:inherit;text-decoration:none;">contact@tsaitclub.edu</a>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>TSA College, Tech Block B</span>
+          </div>
+        </div>
+      </div>
+      <div class="join-cta">
+        <div class="join-cta-icon"><i class="fa-solid fa-user-plus"></i></div>
+        <h3>Apply for Membership</h3>
+        <p>
+          Fill out a quick form and become part of our growing community of
+          tech enthusiasts.
+        </p>
+        <button id="open-join-modal" class="btn-primary" data-modal="join-modal">
+          Apply Now <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
 
-    <div id="toast-container"></div>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-sections">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
+          <p>Innovating the future, one line of code at a time.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Tech Insights</a></li>
+            <li><a href="events.html">Upcoming Events</a></li>
+            <li><a href="resources.html">Resources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-discord"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Back to Top Button -->
-    <button
-      id="back-to-top"
-      class="back-to-top"
-      aria-label="Scroll back to top"
-    >
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
+  <!-- Modals -->
+  <!-- Join Us Modal (Multi-Step Wizard) -->
+  <div class="modal-overlay" id="join-modal">
+    <div class="modal-content join-modal-content">
+      <button class="modal-close" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="join-modal-header">
+        <i class="fa-solid fa-user-plus modal-icon"></i>
+        <h3>Join <span class="gradient-text">IT Club</span></h3>
+        <p>Start your journey with us.</p>
+      </div>
 
-    <script src="js/data.js"></script>
-    <script src="js/script.js"></script>
+      <!-- Progress Bar -->
+      <div class="wizard-progress">
+        <div class="progress-step active" data-step="1">1</div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="2">2</div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="3">3</div>
+      </div>
 
-    <!-- Load next event from data.js -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (
-          typeof siteData !== "undefined" &&
-          siteData.events &&
-          siteData.events.length > 0
-        ) {
-          // Find the nearest upcoming event by date
-          const now = new Date();
-          let nextEvent = null;
-          siteData.events.forEach(function (e) {
-            if (e.date) {
-              const eventDate = new Date(e.date);
-              if (
-                eventDate > now &&
-                (!nextEvent || eventDate < new Date(nextEvent.date))
-              ) {
-                nextEvent = e;
-              }
+      <form id="join-form" action="https://formspree.io/f/meelwjol" method="POST">
+        <!-- Step 1: Personal Details -->
+        <div class="form-step active" id="step-1">
+          <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" name="name" placeholder="Full Name" required />
+          </div>
+          <div class="input-group">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" name="email" placeholder="Email Address" required />
+          </div>
+          <div class="input-group">
+            <i class="fa-brands fa-whatsapp"></i>
+            <input type="tel" name="phone" placeholder="Phone / WhatsApp Number" required />
+          </div>
+          <div class="wizard-btn-group">
+            <button type="button" class="btn-primary btn-next">
+              Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Technical Skills -->
+        <div class="form-step" id="step-2">
+          <div class="input-group">
+            <i class="fa-solid fa-code"></i>
+            <select name="primary_interest" required>
+              <option value="" disabled selected>Primary Interest</option>
+              <option value="frontend">Frontend Web Dev</option>
+              <option value="backend">Backend & APIs</option>
+              <option value="cyber">Cybersecurity</option>
+              <option value="ai">AI / Machine Learning</option>
+              <option value="other">Other / Learning</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <i class="fa-solid fa-layer-group"></i>
+            <select name="experience_level" required>
+              <option value="" disabled selected>Experience Level</option>
+              <option value="beginner">Beginner (No experience)</option>
+              <option value="intermediate">
+                Intermediate (Some projects)
+              </option>
+              <option value="advanced">Advanced (Highly skilled)</option>
+            </select>
+          </div>
+          <div class="wizard-btn-group">
+            <button type="button" class="btn-secondary btn-prev">
+              <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <button type="button" class="btn-primary btn-next">
+              Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Motivation & Submit -->
+        <div class="form-step" id="step-3">
+          <div class="input-group">
+            <i class="fa-solid fa-comment-dots" style="align-self: flex-start; margin-top: 15px"></i>
+            <textarea name="motivation" placeholder="Why do you want to join? (Optional)"></textarea>
+          </div>
+          <div class="wizard-btn-group">
+            <button type="button" class="btn-secondary btn-prev">
+              <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <button type="submit" class="btn-primary">
+              Submit Application <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal-overlay" id="mission-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <i class="fa-solid fa-laptop-code modal-icon"></i>
+      <h3>Our <span class="gradient-text">Mission</span></h3>
+
+      <p>
+        To empower students with practical, industry-relevant tech skills
+        through hands-on projects and collaborative learning. We bridge the
+        gap between theoretical knowledge and real-world application.
+      </p>
+
+      <h4>The Core Philosophy</h4>
+      <p>
+        At TSA IT Club, we believe that the best way to learn technology is by
+        building it. Traditional classroom theory is essential, but
+        constructing real projects alongside peers is where true mastery
+        happens.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Did you know?</strong> Over 80% of our active members secure
+          internships before their final year, thanks to the portfolio of
+          projects they build here.
+        </p>
+      </div>
+
+      <h4>Our Key Objectives</h4>
+      <ul>
+        <li>Provide hands-on coding experience through guided workshops.</li>
+        <li>
+          Foster a culture of continuous learning, peer-review, and
+          mentorship.
+        </li>
+        <li>
+          Connect students with industry professionals via seminars and
+          networking events.
+        </li>
+        <li>Promote open-source contributions and global collaboration.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="whatwedo-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <i class="fa-solid fa-users-gear modal-icon"></i>
+      <h3>What We <span class="gradient-text">Do</span></h3>
+
+      <p>
+        We organize various activities throughout the academic year to keep
+        our members engaged and up-to-date with the latest tech trends. Our
+        calendar is packed with opportunities to grow.
+      </p>
+
+      <h4>Technical Workshops</h4>
+      <p>
+        Every week, our senior members and guest speakers host deep-dive
+        sessions. Topics include:
+      </p>
+      <ul>
+        <li>Modern Web Development (React, Node.js, Next.js)</li>
+        <li>Artificial Intelligence and Machine Learning basics</li>
+        <li>
+          Cybersecurity fundamentals and capture-the-flag (CTF) strategies
+        </li>
+        <li>Cloud computing and deployment (AWS, Docker)</li>
+      </ul>
+
+      <h4>Competitions & Hackathons</h4>
+      <p>
+        We host the annual <strong>TSA Hackathon</strong>, a 48-hour coding
+        marathon where students solve real-world problems. We also organize
+        monthly algorithmic coding challenges to prepare students for
+        technical interviews.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          Join our Slack channel to participate in the "Bug of the Week"
+          bounty and win club merchandise!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="vision-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <i class="fa-solid fa-lightbulb modal-icon"></i>
+      <h3>Our <span class="gradient-text">Vision</span></h3>
+
+      <p>
+        To be the leading hub for technological innovation and excellence
+        within the TSA College campus and beyond, producing top-tier tech
+        talent ready for the global market.
+      </p>
+
+      <h4>Looking to the Future</h4>
+      <p>
+        We see a future where every student, regardless of their background,
+        has the resources, mentorship, and community support to turn their
+        innovative ideas into reality. By 2030, we aim to establish a
+        fully-funded student startup incubator.
+      </p>
+
+      <h4>Community Impact</h4>
+      <ul>
+        <li>Building software solutions for local college departments.</li>
+        <li>Hosting tech-literacy campaigns for non-engineering students.</li>
+        <li>
+          Creating a permanent alumni network for ongoing career support.
+        </li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>
+          <strong>Join the Vision:</strong> We are actively looking for
+          visionary students to lead our upcoming AI Research Division.
+          Contact the core committee if interested!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team & Project modals moved to team.html and projects.html -->
+
+  <div id="toast-container"></div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ── Chatbot Widget ───────────────────────────────────────── -->
+  <!-- Toggle button fixed at bottom-right -->
+  <button id="chatbot-toggle" aria-label="Open Club Assistant Chatbot">
+    <i class="fa-solid fa-robot"></i>
+  </button>
+
+  <!-- Chatbot window -->
+  <div id="chatbot-window" role="dialog" aria-label="TSA IT Club Assistant">
+    <!-- Header -->
+    <div id="chatbot-header">
+      <div class="chatbot-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="chatbot-header-info">
+        <h4>TSA Bot</h4>
+        <span class="chatbot-status">
+          <span class="chatbot-status-dot"></span> Online
+        </span>
+      </div>
+      <button id="chatbot-close" aria-label="Close chatbot">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Message area -->
+    <div id="chatbot-messages"></div>
+
+    <!-- Input area -->
+    <div id="chatbot-input-area">
+      <input id="chatbot-input" type="text" placeholder="Ask me anything about the club..." autocomplete="off"
+        maxlength="200" />
+      <button id="chatbot-send" aria-label="Send message">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+  <!-- ── End Chatbot Widget ────────────────────────────────────── -->
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/chatbot.js"></script>
+
+  <!-- Load next event from data.js -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (
+        typeof siteData !== "undefined" &&
+        siteData.events &&
+        siteData.events.length > 0
+      ) {
+        // Find the nearest upcoming event by date
+        const now = new Date();
+        let nextEvent = null;
+        siteData.events.forEach(function (e) {
+          if (e.date) {
+            const eventDate = new Date(e.date);
+            if (
+              eventDate > now &&
+              (!nextEvent || eventDate < new Date(nextEvent.date))
+            ) {
+              nextEvent = e;
             }
-          });
-          if (!nextEvent) nextEvent = siteData.events[0];
-          const titleEl = document.getElementById("next-event-title");
-          if (titleEl && nextEvent) {
-            titleEl.innerText = nextEvent.title;
           }
+        });
+        if (!nextEvent) nextEvent = siteData.events[0];
+        const titleEl = document.getElementById("next-event-title");
+        if (titleEl && nextEvent) {
+          titleEl.innerText = nextEvent.title;
         }
-      });
-    </script>
-  </body>
+      }
+    });
+  </script>
+</body>
+
 </html>

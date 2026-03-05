@@ -1,166 +1,170 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Download workshop notes, guides, and project templates from TSA IT Club."
-    />
-    <title>Resources | TSA IT Club</title>
-    <link rel="icon" type="image/png" href="images/logo.png" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
 
-  <body>
-    <!-- Preloader -->
-    <div id="preloader">
-      <div class="loader-content">
-        <div class="loader-logo"><i class="fa-solid fa-code"></i></div>
-        <h2>TSA <span class="gradient-text">IT Club</span></h2>
-        <div class="loader-bar"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Download workshop notes, guides, and project templates from TSA IT Club." />
+  <title>Resources | TSA IT Club</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader-logo"><i class="fa-solid fa-code"></i></div>
+      <h2>TSA <span class="gradient-text">IT Club</span></h2>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Background -->
+  <div class="glow-container">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-content">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html" class="active-page">Resources</a></li>
+        <li>
+          <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+        </li>
+        <li>
+          <a href="index.html#contact" class="btn-primary-sm">Join Us</a>
+        </li>
+      </ul>
+      <div class="hamburger" role="button" tabindex="0" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
       </div>
     </div>
+  </nav>
 
-    <!-- Background -->
-    <div class="glow-container">
-      <div class="glow-orb orb-1"></div>
-      <div class="glow-orb orb-2"></div>
+  <!-- Resources Section -->
+  <section id="resources" class="section page-hero">
+    <div class="section-header reveal">
+      <h2>Club <span class="gradient-text">Resources</span></h2>
+      <p>Download workshop notes, guides, and project templates.</p>
     </div>
+    <div id="resources-grid" class="resources-grid reveal-stagger"></div>
+  </section>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-      <div class="nav-content">
-        <a href="index.html" class="logo">
+  <footer>
+    <div class="footer-content">
+      <div class="footer-sections">
+        <div class="footer-brand">
           <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
-        </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="resources.html" class="active-page">Resources</a></li>
-          <li>
-            <button
-              id="theme-toggle"
-              class="theme-btn"
-              aria-label="Toggle Dark/Light Mode"
-            >
-              <i class="fa-solid fa-sun"></i>
-            </button>
-          </li>
-          <li>
-            <a href="index.html#contact" class="btn-primary-sm">Join Us</a>
-          </li>
-        </ul>
-        <div
-          class="hamburger"
-          role="button"
-          tabindex="0"
-          aria-label="Toggle Navigation Menu"
-        >
-          <i class="fa-solid fa-bars"></i>
+          <p>Innovating the future, one line of code at a time.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Tech Insights</a></li>
+            <li><a href="events.html">Upcoming Events</a></li>
+            <li><a href="resources.html">Resources</a></li>
+          </ul>
         </div>
       </div>
-    </nav>
-
-    <!-- Resources Section -->
-    <section id="resources" class="section page-hero">
-      <div class="section-header reveal">
-        <h2>Club <span class="gradient-text">Resources</span></h2>
-        <p>Download workshop notes, guides, and project templates.</p>
-      </div>
-      <div id="resources-grid" class="resources-grid reveal-stagger"></div>
-    </section>
-
-    <footer>
-      <div class="footer-content">
-        <div class="footer-sections">
-          <div class="footer-brand">
-            <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
-            <p>Innovating the future, one line of code at a time.</p>
-          </div>
-          <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="blog.html">Tech Insights</a></li>
-              <li><a href="events.html">Upcoming Events</a></li>
-              <li><a href="resources.html">Resources</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
-          <div class="footer-social">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-discord"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-          </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-discord"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <div id="toast-container"></div>
+  <div id="toast-container"></div>
 
-    <button
-      id="back-to-top"
-      class="back-to-top"
-      aria-label="Scroll back to top"
-    >
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
+  <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
-    <script src="js/data.js"></script>
-    <script src="js/sheets-config.js"></script>
-    <script src="js/sheets-sync.js"></script>
-    <script>
-      // ── Render resources via SheetSync (falls back to data.js automatically) ──
-      document.addEventListener("DOMContentLoaded", function () {
-        var grid = document.getElementById("resources-grid");
-        if (!grid) return;
+  <!-- ── Chatbot Widget ───────────────────────────────────────── -->
+  <button id="chatbot-toggle" aria-label="Open Club Assistant Chatbot">
+    <i class="fa-solid fa-robot"></i>
+  </button>
+  <div id="chatbot-window" role="dialog" aria-label="TSA IT Club Assistant">
+    <div id="chatbot-header">
+      <div class="chatbot-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="chatbot-header-info">
+        <h4>TSA Bot</h4>
+        <span class="chatbot-status"><span class="chatbot-status-dot"></span> Online</span>
+      </div>
+      <button id="chatbot-close" aria-label="Close chatbot"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="chatbot-messages"></div>
+    <div id="chatbot-input-area">
+      <input id="chatbot-input" type="text" placeholder="Ask me anything about the club..." autocomplete="off"
+        maxlength="200" />
+      <button id="chatbot-send" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <!-- ── End Chatbot Widget ────────────────────────────────────── -->
 
-        grid.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading resources...</p>';
+  <script src="js/data.js"></script>
+  <script src="js/sheets-config.js"></script>
+  <script src="js/sheets-sync.js"></script>
+  <script>
+    // ── Render resources via SheetSync (falls back to data.js automatically) ──
+    document.addEventListener("DOMContentLoaded", function () {
+      var grid = document.getElementById("resources-grid");
+      if (!grid) return;
 
-        window.SheetSync.load("resources", function (resources) {
-          if (!resources || resources.length === 0) {
-            grid.innerHTML =
-              '<div style="text-align:center;padding:3rem 1rem;">' +
-              '<i class="fa-regular fa-folder-open" style="font-size:3rem;opacity:0.3;margin-bottom:1rem;display:block;"></i>' +
-              '<p style="opacity:0.6;font-size:1.1rem;">No resources uploaded yet.</p>' +
-              '<p style="opacity:0.4;font-size:0.85rem;margin-top:0.5rem;">Workshop notes and guides will appear here when available.</p>' +
-              '</div>';
-            return;
-          }
+      grid.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading resources...</p>';
 
-          grid.innerHTML = resources
-            .map(function (r) {
-              return (
-                '<div class="resource-card glass-panel">' +
-                '<div class="resource-icon"><i class="' + (r.icon || "fa-solid fa-file") + '"></i></div>' +
-                '<div class="resource-info">' +
-                "<h4>" + (r.title || "Untitled Resource") + "</h4>" +
-                "<p>" + (r.description || "") + "</p>" +
-                "</div>" +
-                (r.downloadLink && r.downloadLink !== "#" && r.downloadLink.trim() !== ""
-                  ? '<a href="' + r.downloadLink + '" target="_blank" class="btn-icon-link"><i class="fa-solid fa-download"></i></a>'
-                  : '<span class="btn-icon-link" style="opacity:0.3;cursor:default;"><i class="fa-solid fa-clock"></i></span>') +
-                "</div>"
-              );
-            })
-            .join("");
-        });
+      window.SheetSync.load("resources", function (resources) {
+        if (!resources || resources.length === 0) {
+          grid.innerHTML =
+            '<div style="text-align:center;padding:3rem 1rem;">' +
+            '<i class="fa-regular fa-folder-open" style="font-size:3rem;opacity:0.3;margin-bottom:1rem;display:block;"></i>' +
+            '<p style="opacity:0.6;font-size:1.1rem;">No resources uploaded yet.</p>' +
+            '<p style="opacity:0.4;font-size:0.85rem;margin-top:0.5rem;">Workshop notes and guides will appear here when available.</p>' +
+            '</div>';
+          return;
+        }
+
+        grid.innerHTML = resources
+          .map(function (r) {
+            return (
+              '<div class="resource-card glass-panel">' +
+              '<div class="resource-icon"><i class="' + (r.icon || "fa-solid fa-file") + '"></i></div>' +
+              '<div class="resource-info">' +
+              "<h4>" + (r.title || "Untitled Resource") + "</h4>" +
+              "<p>" + (r.description || "") + "</p>" +
+              "</div>" +
+              (r.downloadLink && r.downloadLink !== "#" && r.downloadLink.trim() !== ""
+                ? '<a href="' + r.downloadLink + '" target="_blank" class="btn-icon-link"><i class="fa-solid fa-download"></i></a>'
+                : '<span class="btn-icon-link" style="opacity:0.3;cursor:default;"><i class="fa-solid fa-clock"></i></span>') +
+              "</div>"
+            );
+          })
+          .join("");
       });
-    </script>
-    <script src="js/script.js"></script>
-  </body>
+    });
+  </script>
+  <script src="js/script.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+
 </html>
