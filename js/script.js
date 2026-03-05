@@ -91,23 +91,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 2.5 Auto-Scroll Mobile Nav to Active Link
-    const activeLink = document.querySelector('.nav-links .active-page');
-    if (activeLink && navLinks) {
-        // Wait for fonts & layout to finish rendering for accurate widths
-        window.addEventListener('load', () => {
-            const parentLi = activeLink.closest('li');
-            if (parentLi) {
-                // Determine scroll position to center the active item
-                const centerPos = parentLi.offsetLeft - (navLinks.clientWidth / 2) + (parentLi.clientWidth / 2);
+    const navLinks = document.querySelector('.nav-links');
+    const allNavLinks = document.querySelectorAll('.nav-links a');
 
-                // Use smooth scrolling for a premium feel
-                navLinks.scrollTo({
-                    left: Math.max(0, centerPos),
-                    behavior: 'smooth'
-                });
-            }
-        });
+    // Function to calculate and execute the smooth scroll
+    function scrollToCenteredLink(linkElement) {
+        if (!linkElement || !navLinks) return;
+        const parentLi = linkElement.closest('li');
+        if (parentLi) {
+            // Calculate center position
+            const centerPos = parentLi.offsetLeft - (navLinks.clientWidth / 2) + (parentLi.clientWidth / 2);
+            // Use smooth scrolling
+            navLinks.scrollTo({
+                left: Math.max(0, centerPos),
+                behavior: 'smooth'
+            });
+        }
     }
+
+    // 1. Initial scroll on page load (Wait for layouts/fonts)
+    window.addEventListener('load', () => {
+        const activeLink = document.querySelector('.nav-links .active-page');
+        if (activeLink) scrollToCenteredLink(activeLink);
+    });
+
+    // 2. Scroll immediately when user clicks any link (for smoother UX before browser navigation)
+    allNavLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            scrollToCenteredLink(this);
+        });
+    });
 
     // 3. Reveal Elements on Scroll
     const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
