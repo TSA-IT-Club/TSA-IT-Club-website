@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             preloader.style.opacity = '0';
             preloader.style.visibility = 'hidden';
-        }, 800);
+        }, 300);
     }
 
     // --- 0.5 Theme Toggle System ---
