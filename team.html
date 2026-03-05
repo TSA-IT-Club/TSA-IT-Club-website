@@ -1,370 +1,378 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Meet the executive board and team members of the TSA IT Club."
-    />
-    <title>Team | TSA IT Club</title>
-    <link rel="icon" type="image/png" href="images/logo.png" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
 
-  <body>
-    <!-- Preloader -->
-    <div id="preloader">
-      <div class="loader-content">
-        <div class="loader-logo"><i class="fa-solid fa-code"></i></div>
-        <h2>TSA <span class="gradient-text">IT Club</span></h2>
-        <div class="loader-bar"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Meet the executive board and team members of the TSA IT Club." />
+  <title>Team | TSA IT Club</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader-logo"><i class="fa-solid fa-code"></i></div>
+      <h2>TSA <span class="gradient-text">IT Club</span></h2>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Background -->
+  <div class="glow-container">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-content">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="team.html" class="active-page">Team</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li>
+          <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+        </li>
+        <li>
+          <a href="index.html#contact" class="btn-primary-sm">Join Us</a>
+        </li>
+      </ul>
+      <div class="hamburger" role="button" tabindex="0" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
       </div>
     </div>
+  </nav>
 
-    <!-- Background -->
-    <div class="glow-container">
-      <div class="glow-orb orb-1"></div>
-      <div class="glow-orb orb-2"></div>
+  <!-- Team Section -->
+  <section id="team" class="section page-hero">
+    <div class="section-header reveal">
+      <h2>Meet The <span class="gradient-text">Team</span></h2>
+      <p>The minds behind the TSA IT Club.</p>
     </div>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-      <div class="nav-content">
-        <a href="index.html" class="logo">
-          <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
-        </a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="team.html" class="active-page">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li>
-            <button
-              id="theme-toggle"
-              class="theme-btn"
-              aria-label="Toggle Dark/Light Mode"
-            >
-              <i class="fa-solid fa-sun"></i>
-            </button>
-          </li>
-          <li>
-            <a href="index.html#contact" class="btn-primary-sm">Join Us</a>
-          </li>
-        </ul>
-        <div
-          class="hamburger"
-          role="button"
-          tabindex="0"
-          aria-label="Toggle Navigation Menu"
-        >
-          <i class="fa-solid fa-bars"></i>
-        </div>
-      </div>
-    </nav>
+    <!-- Dynamic containers -->
+    <div id="executive-list" class="mobile-member-list reveal" style="max-width: 800px; margin: 0 auto 40px auto"></div>
+    <h3 class="board-title reveal">Board Members</h3>
+    <div id="board-grid" class="board-grid reveal"></div>
+    <div id="board-list-mobile" class="mobile-board-list reveal"></div>
+  </section>
 
-    <!-- Team Section -->
-    <section id="team" class="section page-hero">
-      <div class="section-header reveal">
-        <h2>Meet The <span class="gradient-text">Team</span></h2>
-        <p>The minds behind the TSA IT Club.</p>
-      </div>
-
-      <!-- Dynamic containers -->
-      <div
-        id="executive-list"
-        class="mobile-member-list reveal"
-        style="max-width: 800px; margin: 0 auto 40px auto"
-      ></div>
-      <h3 class="board-title reveal">Board Members</h3>
-      <div id="board-grid" class="board-grid reveal"></div>
-      <div id="board-list-mobile" class="mobile-board-list reveal"></div>
-    </section>
-
-    <!-- Single generic modal (will be filled dynamically) -->
-    <div class="modal-overlay" id="team-modal">
-      <div class="modal-content team-modal-content">
-        <button class="modal-close" aria-label="Close Modal">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <div class="team-modal-header">
-          <img src="" alt="" class="team-modal-img" id="modal-avatar" />
-          <div class="team-modal-info">
-            <h3 id="modal-name"></h3>
-            <p class="role" id="modal-role"></p>
-            <div class="social-links-modal" id="modal-social"></div>
-          </div>
-        </div>
-        <div class="team-modal-body">
-          <h4>About</h4>
-          <p id="modal-about"></p>
-          <h4>Skills</h4>
-          <p id="modal-skills"></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Image Expansion Lightbox -->
-    <div class="modal-overlay" id="lightbox-modal" style="z-index: 2000; background: rgba(0,0,0,0.9);">
-      <button class="lightbox-close" aria-label="Close Lightbox" style="position: absolute; top: 20px; right: 30px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; text-shadow: 0 0 10px rgba(0,0,0,0.5);">
+  <!-- Single generic modal (will be filled dynamically) -->
+  <div class="modal-overlay" id="team-modal">
+    <div class="modal-content team-modal-content">
+      <button class="modal-close" aria-label="Close Modal">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <img src="" alt="Full Screen Profile" id="lightbox-img" style="max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: zoom-out;">
-    </div>
-
-    <footer>
-      <div class="footer-content">
-        <div class="footer-sections">
-          <div class="footer-brand">
-            <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
-            <p>Innovating the future, one line of code at a time.</p>
-          </div>
-          <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="blog.html">Tech Insights</a></li>
-              <li><a href="events.html">Upcoming Events</a></li>
-              <li><a href="resources.html">Resources</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
-          <div class="footer-social">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-discord"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-          </div>
+      <div class="team-modal-header">
+        <img src="" alt="" class="team-modal-img" id="modal-avatar" />
+        <div class="team-modal-info">
+          <h3 id="modal-name"></h3>
+          <p class="role" id="modal-role"></p>
+          <div class="social-links-modal" id="modal-social"></div>
         </div>
       </div>
-    </footer>
+      <div class="team-modal-body">
+        <h4>About</h4>
+        <p id="modal-about"></p>
+        <h4>Skills</h4>
+        <p id="modal-skills"></p>
+      </div>
+    </div>
+  </div>
 
-    <div id="toast-container"></div>
-    <button
-      id="back-to-top"
-      class="back-to-top"
-      aria-label="Scroll back to top"
-    >
-      <i class="fa-solid fa-arrow-up"></i>
+  <!-- Image Expansion Lightbox -->
+  <div class="modal-overlay" id="lightbox-modal" style="z-index: 2000; background: rgba(0,0,0,0.9);">
+    <button class="lightbox-close" aria-label="Close Lightbox"
+      style="position: absolute; top: 20px; right: 30px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; text-shadow: 0 0 10px rgba(0,0,0,0.5);">
+      <i class="fa-solid fa-xmark"></i>
     </button>
+    <img src="" alt="Full Screen Profile" id="lightbox-img"
+      style="max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: zoom-out;">
+  </div>
 
-    <script src="js/data.js"></script>
-    <script src="js/sheets-config.js"></script>
-    <script src="js/sheets-sync.js"></script>
-    <script>
-      // ── Render team via SheetSync (falls back to data.js automatically) ──
-      document.addEventListener("DOMContentLoaded", function () {
+  <footer>
+    <div class="footer-content">
+      <div class="footer-sections">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
+          <p>Innovating the future, one line of code at a time.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Tech Insights</a></li>
+            <li><a href="events.html">Upcoming Events</a></li>
+            <li><a href="resources.html">Resources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-discord"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-        var execContainer  = document.getElementById("executive-list");
-        var boardGrid      = document.getElementById("board-grid");
-        var boardMobile    = document.getElementById("board-list-mobile");
+  <div id="toast-container"></div>
+  <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
-        if (execContainer) execContainer.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading team...</p>';
+  <script src="js/data.js"></script>
+  <script src="js/sheets-config.js"></script>
+  <script src="js/sheets-sync.js"></script>
+  <script>
+    // ── Render team via SheetSync (falls back to data.js automatically) ──
+    document.addEventListener("DOMContentLoaded", function () {
 
-        window.SheetSync.load("team", function (members) {
-          var execs  = (members || []).filter(function (m) { return m.type === "exec"; });
-          var boards = (members || []).filter(function (m) { return m.type === "board"; });
+      var execContainer = document.getElementById("executive-list");
+      var boardGrid = document.getElementById("board-grid");
+      var boardMobile = document.getElementById("board-list-mobile");
 
-          // ── Executives ──
-          if (!execContainer) { /* skip */ }
-          else if (execs.length === 0) {
-            execContainer.innerHTML =
-              '<div style="text-align:center;padding:2rem 1rem;">' +
-              '<i class="fa-solid fa-users" style="font-size:2.5rem;opacity:0.3;margin-bottom:0.75rem;display:block;"></i>' +
-              '<p style="opacity:0.6;">No executives listed yet.</p></div>';
-          } else {
-            execContainer.innerHTML = '<p class="mobile-list-label mobile-list-label--exec" style="text-align:left;">\uD83D\uDC51 Executives</p>';
-            execs.forEach(function (m) {
-              var avatarHtml = m.image
-                ? '<img src="' + m.image + '" class="mobile-member-avatar" style="object-fit:cover; aspect-ratio:1/1;">'
-                : '<div class="mobile-member-avatar" style="background:' + (m.gradient || "#3b82f6") + '">' + (m.avatarInitial || "?") + "</div>";
-              var nicknameHtml = m.nickname ? '<br><span class="member-nickname">aka ' + m.nickname + '</span>' : '';
-              execContainer.innerHTML +=
-                '<div class="mobile-member-row mobile-member-row--exec"' +
-                ' data-name="'     + (m.name     || "") + '"' +
-                ' data-nickname="' + (m.nickname || "") + '"' +
-                ' data-role="'     + (m.role     || "") + '"' +
-                ' data-image="'    + (m.image    || "") + '"' +
-                ' data-avatar="'   + (m.avatarInitial || "") + '"' +
-                ' data-linkedin="' + (m.linkedin || "") + '"' +
-                ' data-github="'   + (m.github   || "") + '"' +
-                ' data-email="'    + (m.email    || "") + '"' +
-                ' data-about="'    + (m.about    || "") + '"' +
-                ' data-skills="'   + (m.skills   || "") + '">' +
-                avatarHtml +
-                '<div class="mobile-member-info"><strong>' + (m.name || "?") + nicknameHtml + "</strong><span>" + (m.role || "") + "</span></div>" +
-                '<i class="fa-solid fa-chevron-right"></i>' +
-                "</div>";
-            });
-          }
+      if (execContainer) execContainer.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading team...</p>';
 
-          // ── Board Desktop Grid ──
-          if (!boardGrid) { /* skip */ }
-          else if (boards.length === 0) {
-            boardGrid.innerHTML =
-              '<div style="text-align:center;padding:2rem 1rem;grid-column:1/-1;">' +
-              '<p style="opacity:0.5;">No board members listed yet.</p></div>';
-          } else {
-            boardGrid.innerHTML = "";
-            boards.forEach(function (m) {
-              var nicknameHtml = m.nickname ? '<br><span class="member-nickname">aka ' + m.nickname + '</span>' : '';
-              boardGrid.innerHTML +=
-                '<div class="board-card glass-panel"' +
-                ' data-name="'     + (m.name     || "") + '"' +
-                ' data-nickname="' + (m.nickname || "") + '"' +
-                ' data-role="'     + (m.role     || "") + '"' +
-                ' data-image="'    + (m.image    || "") + '"' +
-                ' data-avatar="'   + (m.avatarInitial || "") + '"' +
-                ' data-linkedin="' + (m.linkedin || "") + '"' +
-                ' data-github="'   + (m.github   || "") + '"' +
-                ' data-email="'    + (m.email    || "") + '"' +
-                ' data-about="'    + (m.about    || "") + '"' +
-                ' data-skills="'   + (m.skills   || "") + '">' +
-                "<h4>" + (m.name || "?") + nicknameHtml + "</h4>" +
-                '<p class="role-sm">' + (m.role || "") + "</p>" +
-                "</div>";
-            });
-          }
+      window.SheetSync.load("team", function (members) {
+        var execs = (members || []).filter(function (m) { return m.type === "exec"; });
+        var boards = (members || []).filter(function (m) { return m.type === "board"; });
 
-          // ── Board Mobile List ──
-          if (!boardMobile) { /* skip */ }
-          else if (boards.length === 0) {
-            boardMobile.innerHTML = "";
-          } else {
-            boardMobile.innerHTML = "";
-            boards.forEach(function (m) {
-              var avatarHtml = m.image
-                ? '<img src="' + m.image + '" class="mobile-member-avatar" style="object-fit:cover; aspect-ratio:1/1;">'
-                : '<div class="mobile-member-avatar" style="background:' + (m.gradient || "#3b82f6") + '">' + (m.avatarInitial || "?") + "</div>";
-              var nicknameHtml = m.nickname ? '<br><span class="member-nickname">aka ' + m.nickname + '</span>' : '';
-              boardMobile.innerHTML +=
-                '<div class="mobile-member-row"' +
-                ' data-name="'     + (m.name     || "") + '"' +
-                ' data-nickname="' + (m.nickname || "") + '"' +
-                ' data-role="'     + (m.role     || "") + '"' +
-                ' data-image="'    + (m.image    || "") + '"' +
-                ' data-avatar="'   + (m.avatarInitial || "") + '"' +
-                ' data-linkedin="' + (m.linkedin || "") + '"' +
-                ' data-github="'   + (m.github   || "") + '"' +
-                ' data-email="'    + (m.email    || "") + '"' +
-                ' data-about="'    + (m.about    || "") + '"' +
-                ' data-skills="'   + (m.skills   || "") + '">' +
-                avatarHtml +
-                '<div class="mobile-member-info"><strong>' + (m.name || "?") + nicknameHtml + "</strong><span>" + (m.role || "") + "</span></div>" +
-                '<i class="fa-solid fa-chevron-right"></i>' +
-                "</div>";
-            });
-          }
-
-          // Attach modal triggers after DOM is populated
-          attachModalTriggers();
-        });
-      });
-
-      function attachModalTriggers() {
-        var triggers = document.querySelectorAll(".mobile-member-row, .board-card");
-        triggers.forEach(function (el) {
-          el.addEventListener("click", function () {
-            var name     = el.dataset.name;
-            var nickname = el.dataset.nickname;
-            var role     = el.dataset.role;
-            var image    = el.dataset.image;
-            var linkedin = el.dataset.linkedin;
-            var github   = el.dataset.github;
-            var email    = el.dataset.email;
-            var about    = el.dataset.about  || "No information provided.";
-            var skills   = el.dataset.skills || "—";
-
-            var displayName = nickname ? name + " <br><span class='member-nickname'>aka " + nickname + "</span>" : name;
-            document.getElementById("modal-name").innerHTML   = displayName;
-            document.getElementById("modal-role").innerText   = role;
-            document.getElementById("modal-about").innerText  = about;
-            document.getElementById("modal-skills").innerText = skills;
-
-            var avatarImg = document.getElementById("modal-avatar");
-            avatarImg.src = image
-              ? image
-              : "https://ui-avatars.com/api/?name=" + encodeURIComponent(name) + "&background=random&color=fff&size=128";
-
-            var socialHtml = "";
-            if (linkedin && linkedin !== "#")
-              socialHtml += '<a href="' + linkedin + '" target="_blank"><i class="fa-brands fa-linkedin"></i></a>';
-            if (github && github !== "#")
-              socialHtml += '<a href="' + github + '" target="_blank"><i class="fa-brands fa-github"></i></a>';
-            if (email && email !== "#" && email.trim() !== "")
-              socialHtml += '<a href="mailto:' + email + '"><i class="fa-solid fa-envelope"></i></a>';
-            document.getElementById("modal-social").innerHTML = socialHtml;
-
-            document.getElementById("team-modal").classList.add("active");
-            document.body.style.overflow = "hidden";
+        // ── Executives ──
+        if (!execContainer) { /* skip */ }
+        else if (execs.length === 0) {
+          execContainer.innerHTML =
+            '<div style="text-align:center;padding:2rem 1rem;">' +
+            '<i class="fa-solid fa-users" style="font-size:2.5rem;opacity:0.3;margin-bottom:0.75rem;display:block;"></i>' +
+            '<p style="opacity:0.6;">No executives listed yet.</p></div>';
+        } else {
+          execContainer.innerHTML = '<p class="mobile-list-label mobile-list-label--exec" style="text-align:left;">\uD83D\uDC51 Executives</p>';
+          execs.forEach(function (m) {
+            var avatarHtml = m.image
+              ? '<img src="' + m.image + '" class="mobile-member-avatar" style="object-fit:cover; aspect-ratio:1/1;">'
+              : '<div class="mobile-member-avatar" style="background:' + (m.gradient || "#3b82f6") + '">' + (m.avatarInitial || "?") + "</div>";
+            var nicknameHtml = m.nickname ? '<br><span class="member-nickname">aka ' + m.nickname + '</span>' : '';
+            execContainer.innerHTML +=
+              '<div class="mobile-member-row mobile-member-row--exec"' +
+              ' data-name="' + (m.name || "") + '"' +
+              ' data-nickname="' + (m.nickname || "") + '"' +
+              ' data-role="' + (m.role || "") + '"' +
+              ' data-image="' + (m.image || "") + '"' +
+              ' data-avatar="' + (m.avatarInitial || "") + '"' +
+              ' data-linkedin="' + (m.linkedin || "") + '"' +
+              ' data-github="' + (m.github || "") + '"' +
+              ' data-email="' + (m.email || "") + '"' +
+              ' data-about="' + (m.about || "") + '"' +
+              ' data-skills="' + (m.skills || "") + '">' +
+              avatarHtml +
+              '<div class="mobile-member-info"><strong>' + (m.name || "?") + nicknameHtml + "</strong><span>" + (m.role || "") + "</span></div>" +
+              '<i class="fa-solid fa-chevron-right"></i>' +
+              "</div>";
           });
-        });
-      }
-
-      // Modal close
-      document.querySelectorAll(".modal-close").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          document.getElementById("team-modal").classList.remove("active");
-          document.body.style.overflow = "";
-        });
-      });
-      window.addEventListener("click", function (e) {
-        if (e.target.classList.contains("modal-overlay")) {
-          // If it's the lightbox, close lightbox
-          if (e.target.id === "lightbox-modal") {
-            document.getElementById("lightbox-modal").classList.remove("active");
-            // only restore scroll if team-modal isn't active
-            if (!document.getElementById("team-modal").classList.contains("active")) {
-                document.body.style.overflow = "";
-            }
-          } else {
-            document.getElementById("team-modal").classList.remove("active");
-            document.body.style.overflow = "";
-          }
         }
-      });
 
-      // Lightbox logic
-      var modalAvatar = document.getElementById("modal-avatar");
-      
-      modalAvatar.addEventListener("mouseover", function() {
-          if (this.src && !this.src.includes("ui-avatars.com")) {
-              this.style.cursor = "zoom-in";
-          } else {
-              this.style.cursor = "default";
-          }
-      });
+        // ── Board Desktop Grid ──
+        if (!boardGrid) { /* skip */ }
+        else if (boards.length === 0) {
+          boardGrid.innerHTML =
+            '<div style="text-align:center;padding:2rem 1rem;grid-column:1/-1;">' +
+            '<p style="opacity:0.5;">No board members listed yet.</p></div>';
+        } else {
+          boardGrid.innerHTML = "";
+          boards.forEach(function (m) {
+            var nicknameHtml = m.nickname ? '<br><span class="member-nickname">aka ' + m.nickname + '</span>' : '';
+            boardGrid.innerHTML +=
+              '<div class="board-card glass-panel"' +
+              ' data-name="' + (m.name || "") + '"' +
+              ' data-nickname="' + (m.nickname || "") + '"' +
+              ' data-role="' + (m.role || "") + '"' +
+              ' data-image="' + (m.image || "") + '"' +
+              ' data-avatar="' + (m.avatarInitial || "") + '"' +
+              ' data-linkedin="' + (m.linkedin || "") + '"' +
+              ' data-github="' + (m.github || "") + '"' +
+              ' data-email="' + (m.email || "") + '"' +
+              ' data-about="' + (m.about || "") + '"' +
+              ' data-skills="' + (m.skills || "") + '">' +
+              "<h4>" + (m.name || "?") + nicknameHtml + "</h4>" +
+              '<p class="role-sm">' + (m.role || "") + "</p>" +
+              "</div>";
+          });
+        }
 
-      modalAvatar.addEventListener("click", function() {
-          var currentSrc = this.src;
-          // Don't expand if it's the auto-generated UI Avatar
-          if (currentSrc && !currentSrc.includes("ui-avatars.com")) {
-              document.getElementById("lightbox-img").src = currentSrc;
-              document.getElementById("lightbox-modal").classList.add("active");
-              document.body.style.overflow = "hidden";
-          }
-      });
+        // ── Board Mobile List ──
+        if (!boardMobile) { /* skip */ }
+        else if (boards.length === 0) {
+          boardMobile.innerHTML = "";
+        } else {
+          boardMobile.innerHTML = "";
+          boards.forEach(function (m) {
+            var avatarHtml = m.image
+              ? '<img src="' + m.image + '" class="mobile-member-avatar" style="object-fit:cover; aspect-ratio:1/1;">'
+              : '<div class="mobile-member-avatar" style="background:' + (m.gradient || "#3b82f6") + '">' + (m.avatarInitial || "?") + "</div>";
+            var nicknameHtml = m.nickname ? '<br><span class="member-nickname">aka ' + m.nickname + '</span>' : '';
+            boardMobile.innerHTML +=
+              '<div class="mobile-member-row"' +
+              ' data-name="' + (m.name || "") + '"' +
+              ' data-nickname="' + (m.nickname || "") + '"' +
+              ' data-role="' + (m.role || "") + '"' +
+              ' data-image="' + (m.image || "") + '"' +
+              ' data-avatar="' + (m.avatarInitial || "") + '"' +
+              ' data-linkedin="' + (m.linkedin || "") + '"' +
+              ' data-github="' + (m.github || "") + '"' +
+              ' data-email="' + (m.email || "") + '"' +
+              ' data-about="' + (m.about || "") + '"' +
+              ' data-skills="' + (m.skills || "") + '">' +
+              avatarHtml +
+              '<div class="mobile-member-info"><strong>' + (m.name || "?") + nicknameHtml + "</strong><span>" + (m.role || "") + "</span></div>" +
+              '<i class="fa-solid fa-chevron-right"></i>' +
+              "</div>";
+          });
+        }
 
-      document.querySelector(".lightbox-close").addEventListener("click", function() {
+        // Attach modal triggers after DOM is populated
+        attachModalTriggers();
+      });
+    });
+
+    function attachModalTriggers() {
+      var triggers = document.querySelectorAll(".mobile-member-row, .board-card");
+      triggers.forEach(function (el) {
+        el.addEventListener("click", function () {
+          var name = el.dataset.name;
+          var nickname = el.dataset.nickname;
+          var role = el.dataset.role;
+          var image = el.dataset.image;
+          var linkedin = el.dataset.linkedin;
+          var github = el.dataset.github;
+          var email = el.dataset.email;
+          var about = el.dataset.about || "No information provided.";
+          var skills = el.dataset.skills || "—";
+
+          var displayName = nickname ? name + " <br><span class='member-nickname'>aka " + nickname + "</span>" : name;
+          document.getElementById("modal-name").innerHTML = displayName;
+          document.getElementById("modal-role").innerText = role;
+          document.getElementById("modal-about").innerText = about;
+          document.getElementById("modal-skills").innerText = skills;
+
+          var avatarImg = document.getElementById("modal-avatar");
+          avatarImg.src = image
+            ? image
+            : "https://ui-avatars.com/api/?name=" + encodeURIComponent(name) + "&background=random&color=fff&size=128";
+
+          var socialHtml = "";
+          if (linkedin && linkedin !== "#")
+            socialHtml += '<a href="' + linkedin + '" target="_blank"><i class="fa-brands fa-linkedin"></i></a>';
+          if (github && github !== "#")
+            socialHtml += '<a href="' + github + '" target="_blank"><i class="fa-brands fa-github"></i></a>';
+          if (email && email !== "#" && email.trim() !== "")
+            socialHtml += '<a href="mailto:' + email + '"><i class="fa-solid fa-envelope"></i></a>';
+          document.getElementById("modal-social").innerHTML = socialHtml;
+
+          document.getElementById("team-modal").classList.add("active");
+          document.body.style.overflow = "hidden";
+        });
+      });
+    }
+
+    // Modal close
+    document.querySelectorAll(".modal-close").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.getElementById("team-modal").classList.remove("active");
+        document.body.style.overflow = "";
+      });
+    });
+    window.addEventListener("click", function (e) {
+      if (e.target.classList.contains("modal-overlay")) {
+        // If it's the lightbox, close lightbox
+        if (e.target.id === "lightbox-modal") {
           document.getElementById("lightbox-modal").classList.remove("active");
-          // Only restore completely if team modal isn't also open
+          // only restore scroll if team-modal isn't active
           if (!document.getElementById("team-modal").classList.contains("active")) {
             document.body.style.overflow = "";
           }
-      });
-    </script>
-    <script src="js/script.js"></script>
+        } else {
+          document.getElementById("team-modal").classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      }
+    });
 
-  </body>
+    // Lightbox logic
+    var modalAvatar = document.getElementById("modal-avatar");
+
+    modalAvatar.addEventListener("mouseover", function () {
+      if (this.src && !this.src.includes("ui-avatars.com")) {
+        this.style.cursor = "zoom-in";
+      } else {
+        this.style.cursor = "default";
+      }
+    });
+
+    modalAvatar.addEventListener("click", function () {
+      var currentSrc = this.src;
+      // Don't expand if it's the auto-generated UI Avatar
+      if (currentSrc && !currentSrc.includes("ui-avatars.com")) {
+        document.getElementById("lightbox-img").src = currentSrc;
+        document.getElementById("lightbox-modal").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    });
+
+    document.querySelector(".lightbox-close").addEventListener("click", function () {
+      document.getElementById("lightbox-modal").classList.remove("active");
+      // Only restore completely if team modal isn't also open
+      if (!document.getElementById("team-modal").classList.contains("active")) {
+        document.body.style.overflow = "";
+      }
+    });
+  </script>
+  <script src="js/script.js"></script>
+
+  <!-- ── TSA IT Club Chatbot ── -->
+  <div id="tsa-chatbot">
+    <div id="chatbot-window" class="chatbot-window" role="dialog" aria-label="TSA IT Club Chat Assistant">
+      <div class="chatbot-header">
+        <div class="chatbot-header-info">
+          <div class="chatbot-avatar-sm"><i class="fa-solid fa-robot"></i></div>
+          <div>
+            <h4 id="chatbot-name">TSA Assistant</h4>
+            <span class="chatbot-status"><span class="chatbot-status-dot"></span> Online</span>
+          </div>
+        </div>
+        <button class="chatbot-close-btn" id="chatbot-close" aria-label="Close Chat">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="chatbot-messages" id="chatbot-messages"></div>
+      <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
+      <div class="chatbot-input-area">
+        <input type="text" id="chatbot-input" placeholder="Ask me anything..." autocomplete="off" />
+        <button id="chatbot-send" aria-label="Send Message"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+    <button id="chatbot-toggle" class="chatbot-toggle-btn" aria-label="Open Chat Assistant">
+      <i class="fa-solid fa-comment-dots chatbot-icon-open"></i>
+      <i class="fa-solid fa-xmark chatbot-icon-close"></i>
+    </button>
+  </div>
+  <script src="js/chatbot.js"></script>
+
+</body>
+
 </html>
