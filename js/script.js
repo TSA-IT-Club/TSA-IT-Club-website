@@ -128,22 +128,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. Modals Logic
-    const modalTriggers = document.querySelectorAll('.about-card, .team-card, .board-card, .project-card, [data-modal]');
+    const modalTriggers = document.querySelectorAll('.about-card, .team-card, .board-card, .project-card, #open-join-modal');
     const modals = document.querySelectorAll('.modal-overlay');
     const closeBtns = document.querySelectorAll('.modal-close');
 
     // Open Modal (standard card triggers)
     modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            // If it's a button/link inside the nav, we shouldn't implicitly let it jump the page
-            if (trigger.tagName === 'A') e.preventDefault();
-            
+        trigger.addEventListener('click', () => {
             const modalId = trigger.getAttribute('data-modal');
             const targetModal = document.getElementById(modalId);
             if (targetModal) {
                 targetModal.classList.add('active');
-                document.body.classList.add('modal-open');
-                document.body.style.overflow = 'hidden'; // Ensure background doesn't scroll
+                document.body.style.overflow = 'hidden';
             }
         });
     });
@@ -153,10 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const joinModal = document.getElementById('join-modal');
         if (joinModal) {
             joinModal.classList.add('active');
-            document.body.classList.add('modal-open');
             document.body.style.overflow = 'hidden';
-            
-            // Clean up the URL
             history.replaceState(null, null, window.location.pathname);
         }
     }
@@ -168,8 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetModal = document.getElementById(modalId);
             if (targetModal) {
                 targetModal.classList.add('active');
-                document.body.classList.add('modal-open');
-                document.body.style.overflow = 'hidden'; // Ensure background doesn't scroll
+                document.body.style.overflow = 'hidden';
             }
         });
     });
@@ -179,25 +171,15 @@ document.addEventListener('DOMContentLoaded', () => {
         modals.forEach(modal => {
             modal.classList.remove('active');
         });
-        document.body.classList.remove('modal-open');
-        document.body.style.overflow = '';
+        document.body.style.overflow = ''; // Restore scrolling
     };
 
-    // Use event delegation for closing modals to catch dynamically added buttons
-    document.addEventListener('click', (e) => {
-        const closeBtn = e.target.closest('.modal-close, .lightbox-close');
-        if (closeBtn) {
-            closeModal();
-            const parentModal = closeBtn.closest('.modal-overlay');
-            if (parentModal) parentModal.classList.remove('active');
-        }
-    });
+    closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
 
     // Close on outside click
     window.addEventListener('click', (e) => {
         if (e.target.classList.contains('modal-overlay')) {
             closeModal();
-            e.target.classList.remove('active');
         }
     });
 
