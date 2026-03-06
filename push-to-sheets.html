@@ -199,7 +199,8 @@
         color: rgba(226, 232, 240, 0.7);
       }
     </style>
-  </head>
+    <link rel="stylesheet" href="css/chatbot.css" />
+</head>
   <body>
     <div class="card">
       <div class="badge">Developer Tool</div>
@@ -230,7 +231,45 @@
 
     <!-- Load config and data files -->
     <script src="js/sheets-config.js"></script>
-    <script src="js/data.js"></script>
+      <!-- ── Chatbot Widget ───────────────────────────────────────── -->
+  <!-- Toggle button fixed at bottom-right -->
+  <button id="chatbot-toggle" aria-label="Open Club Assistant Chatbot">
+    <i class="fa-solid fa-robot"></i>
+  </button>
+
+  <!-- Chatbot window -->
+  <div id="chatbot-window" role="dialog" aria-label="TSA IT Club Assistant">
+    <!-- Header -->
+    <div id="chatbot-header">
+      <div class="chatbot-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="chatbot-header-info">
+        <h4>TSA Bot</h4>
+        <span class="chatbot-status">
+          <span class="chatbot-status-dot"></span> Online
+        </span>
+      </div>
+      <button id="chatbot-close" aria-label="Close chatbot">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Message area -->
+    <div id="chatbot-messages"></div>
+
+    <!-- Input area -->
+    <div id="chatbot-input-area">
+      <input id="chatbot-input" type="text" placeholder="Ask me anything about the club..." autocomplete="off"
+        maxlength="200" />
+      <button id="chatbot-send" aria-label="Send message">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+  <!-- ── End Chatbot Widget ────────────────────────────────────── -->
+
+  <script src="js/chatbot.js"></script>
+
+  <script src="js/data.js"></script>
     <script src="js/sheets-sync.js"></script>
     <script src="js/script.js"></script>
 

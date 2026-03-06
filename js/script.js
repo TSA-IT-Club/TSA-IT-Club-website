@@ -10,10 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 0. Preloader ---
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        setTimeout(() => {
-            preloader.style.opacity = '0';
-            preloader.style.visibility = 'hidden';
-        }, 300);
+        // Instant load
+        preloader.style.display = 'none';
+
+        /* 
+        // ----------------------------------------------------
+        // IF YOU WANT TO ADD A HARDCODED DELAY LATER (e.g. 800ms)
+        // UNCOMMENT THIS BLOCK AND COMMENT THE 'display: none' ABOVE:
+        // ----------------------------------------------------
+        // preloader.style.display = 'flex';
+        // setTimeout(() => {
+        //     preloader.style.opacity = '0';
+        //     preloader.style.visibility = 'hidden';
+        //     setTimeout(() => preloader.style.display = 'none', 500); 
+        // }, 800);
+        */
     }
 
     // --- 0.5 Theme Toggle System ---
@@ -88,38 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
-
-    // 2.5 Auto-Scroll Mobile Nav to Active Link
-    const navLinks = document.querySelector('.nav-links');
-    const allNavLinks = document.querySelectorAll('.nav-links a');
-
-    // Function to calculate and execute the smooth scroll
-    function scrollToCenteredLink(linkElement) {
-        if (!linkElement || !navLinks) return;
-        const parentLi = linkElement.closest('li');
-        if (parentLi) {
-            // Calculate center position
-            const centerPos = parentLi.offsetLeft - (navLinks.clientWidth / 2) + (parentLi.clientWidth / 2);
-            // Use smooth scrolling
-            navLinks.scrollTo({
-                left: Math.max(0, centerPos),
-                behavior: 'smooth'
-            });
-        }
-    }
-
-    // 1. Initial scroll on page load (Wait for layouts/fonts)
-    window.addEventListener('load', () => {
-        const activeLink = document.querySelector('.nav-links .active-page');
-        if (activeLink) scrollToCenteredLink(activeLink);
-    });
-
-    // 2. Scroll immediately when user clicks any link (for smoother UX before browser navigation)
-    allNavLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            scrollToCenteredLink(this);
-        });
     });
 
     // 3. Reveal Elements on Scroll
@@ -642,6 +621,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+    }
+
+    // --- Global Cache Pre-fetcher ---
+    if (window.SheetSync && typeof window.SheetSync.load === 'function') {
+        const sectionsToFetch = ['events', 'blog', 'projects', 'resources', 'team'];
+        sectionsToFetch.forEach(section => {
+            window.SheetSync.load(section, () => {});
         });
     }
 
