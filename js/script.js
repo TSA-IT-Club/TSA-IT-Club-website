@@ -126,6 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
+    // Expose a global function to re-initialize reveals for dynamically added content
+    window.refreshReveals = () => {
+        const newReveals = document.querySelectorAll('.reveal:not(.active), .reveal-stagger:not(.active)');
+        newReveals.forEach(el => {
+            revealObserver.observe(el);
+        });
+    };
+
     // 4. Modals Logic
     const modalTriggers = document.querySelectorAll('.about-card, .team-card, .board-card, .project-card, #open-join-modal');
     const modals = document.querySelectorAll('.modal-overlay');

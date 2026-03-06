@@ -89,6 +89,14 @@
    * @param {Function} callback - called with (dataArray)
    */
   function load(section, callback) {
+    var originalCallback = callback;
+    callback = function(data) {
+      originalCallback(data);
+      if (typeof window.refreshReveals === 'function') {
+        setTimeout(window.refreshReveals, 50);
+      }
+    };
+
     var cfg = (typeof SHEETS_CONFIG !== "undefined") ? SHEETS_CONFIG : { enabled: false };
 
     if (!cfg.enabled || !cfg.scriptUrl || cfg.scriptUrl === "YOUR-SCRIPT-URL") {

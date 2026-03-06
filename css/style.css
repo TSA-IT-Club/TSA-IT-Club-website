@@ -529,47 +529,7 @@ body.light-theme nav {
   color: #d2a8ff;
 }
 
-/* Floating Card */
-.floating-card {
-  position: absolute;
-  bottom: 40px;
-  left: -40px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px 25px;
-  z-index: 3;
-  animation: float 6s infinite ease-in-out;
-  background: rgba(20, 20, 25, 0.8);
-}
 
-.floating-card i {
-  font-size: 2rem;
-  color: var(--secondary);
-}
-
-.floating-card h4 {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.floating-card p {
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: white;
-  margin: 0;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-15px);
-  }
-}
 
 /* About Section */
 .about-grid {
@@ -2337,9 +2297,18 @@ footer {
     grid-template-columns: 1fr;
     text-align: left;
     /* Keep hero left aligned per user request */
-    padding: 100px 5% 40px;
+    padding: 140px 5% 40px;
     gap: 30px;
     min-height: auto;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  /* Prevent overlapping fixed nav on mobile by using higher specificity */
+  .section.page-hero {
+    padding-top: 180px;
   }
 
   .hero p {
@@ -2853,8 +2822,10 @@ footer {
   .project-overlay {
     background: linear-gradient(
       to top,
-      rgba(3, 7, 18, 0.95) 40%,
-      rgba(3, 7, 18, 0.7) 100%
+      rgba(3, 7, 18, 0.95) 0%,
+      rgba(3, 7, 18, 0.8) 30%,
+      transparent 60%,
+      transparent 100%
     );
     padding: 25px 20px;
   }
@@ -2862,8 +2833,10 @@ footer {
   .project-card:hover .project-overlay {
     background: linear-gradient(
       to top,
-      rgba(3, 7, 18, 0.95) 40%,
-      rgba(3, 7, 18, 0.7) 100%
+      rgba(3, 7, 18, 0.95) 0%,
+      rgba(3, 7, 18, 0.8) 30%,
+      transparent 60%,
+      transparent 100%
     );
   }
 
@@ -2902,16 +2875,6 @@ body.light-theme .nav-links a.active {
   color: var(--primary);
 }
 
-body.light-theme .floating-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-body.light-theme .floating-card p {
-  color: #0f172a;
-  /* Force dark text regardless of other overrides */
-}
 
 /* 2. Mobile Overlap Fixes */
 @media (max-width: 768px) {
@@ -2926,22 +2889,16 @@ body.light-theme .floating-card p {
     width: 100%;
     max-width: 100% !important;
     margin: 20px 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
 
-  .floating-card {
-    position: relative;
-    bottom: unset;
-    left: unset;
-    right: unset;
-    top: unset;
-    margin: 20px auto;
-    transform: scale(0.9);
-    z-index: 10;
-    animation: float 6s infinite ease-in-out;
-    display: flex;
-    justify-content: center;
-    width: fit-content;
+  .card-body {
+    padding: 16px;
+    font-size: 0.8rem;
+    overflow-x: auto;
   }
+
 
   /* --- V6 Peak Mobile Performance Optimizations --- */
 
