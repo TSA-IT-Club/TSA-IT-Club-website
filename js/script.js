@@ -57,65 +57,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 1. Mobile Drawer Navigation ---
+    // --- 1. Mobile Menu Toggle ---
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
-    // Inject the backdrop overlay once (works across all pages)
-    let navOverlay = document.querySelector('.nav-overlay');
-    if (!navOverlay) {
-        navOverlay = document.createElement('div');
-        navOverlay.className = 'nav-overlay';
-        document.body.appendChild(navOverlay);
-    }
-
-    function openDrawer() {
-        navLinks.classList.add('active');
-        navOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // prevent background scroll
+    function toggleMenu() {
+        navLinks.classList.toggle('active');
         const icon = hamburger.querySelector('i');
-        icon.classList.replace('fa-bars', 'fa-xmark');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-xmark');
+        } else {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
     }
 
-    function closeDrawer() {
-        navLinks.classList.remove('active');
-        navOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-        const icon = hamburger.querySelector('i');
-        icon.classList.replace('fa-xmark', 'fa-bars');
-    }
-
-    function toggleDrawer() {
-        navLinks.classList.contains('active') ? closeDrawer() : openDrawer();
-    }
-
-    if (hamburger) {
-        hamburger.addEventListener('click', toggleDrawer);
-        hamburger.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleDrawer();
-            }
-        });
-    }
-
-    // Close drawer when tapping the backdrop
-    navOverlay.addEventListener('click', closeDrawer);
-
-    // Close drawer when a nav link is clicked (navigate or scroll)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            closeDrawer();
-        });
-    });
-
-    // Close drawer on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-            closeDrawer();
+    hamburger.addEventListener('click', toggleMenu);
+    hamburger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
         }
     });
 
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        });
+    });
 
     // 2. Sticky Navbar on Scroll
     const navbar = document.getElementById('navbar');
