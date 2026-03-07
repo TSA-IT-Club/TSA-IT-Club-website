@@ -46,239 +46,8 @@
         return { events: [], blog: [], projects: [], team: [], resources: [] };
     }
 
-    /* ── Intent Definitions ───────────────────────────────────── */
-    /*
-     *  Each intent has:
-     *    keywords  : array of lowercase strings to match against user input
-     *    reply()   : function returning an HTML string (the bot's answer)
-     *    page      : (optional) href for a "Take me there" button
-     *    pageLabel : (optional) label text for that button
-     */
-
-    var INTENTS = [
-
-        /* ── Greeting ─────────────────────────────────────────── */
-        {
-            keywords: ['hello', 'hi', 'hey', 'greetings', 'sup', 'namaste', 'good morning', 'good evening'],
-            reply: function () {
-                return '<p>Hey there! 👋 I\'m <strong>TSA Bot</strong>, your guide to the TSA IT Club.</p>' +
-                    '<p>I can tell you about our <strong>events, team, projects, blog, resources</strong>, or how to <strong>join</strong> the club. What would you like to know?</p>';
-            }
-        },
-
-        /* ── Events ───────────────────────────────────────────── */
-        {
-            keywords: ['event', 'events', 'happening', 'upcoming', 'schedule', 'hackathon', 'workshop', 'seminar', 'ctf', 'calendar'],
-            page: 'events.html',
-            pageLabel: 'View All Events',
-            reply: function () {
-                var data = getData();
-                var events = data.events || [];
-
-                if (events.length === 0) {
-                    return '<p>There are <strong>no scheduled events</strong> at the moment, but stay tuned — exciting things are coming soon! 🚀</p>' +
-                        '<p>Head over to the Events page and check back later.</p>';
-                }
-
-                var lines = events.slice(0, 3).map(function (ev) {
-                    var line = '<strong>' + esc(ev.title) + '</strong>';
-                    if (ev.date) line += ' — ' + esc(ev.date);
-                    if (ev.time) line += ' at ' + esc(ev.time);
-                    if (ev.location) line += ' 📍 ' + esc(ev.location);
-                    return '<p>' + line + '</p>';
-                });
-
-                return '<p>Here are our upcoming events:</p>' + lines.join('') +
-                    (events.length > 3 ? '<p>...and more on the Events page!</p>' : '');
-            }
-        },
-
-        /* ── Team ─────────────────────────────────────────────── */
-        {
-            keywords: ['team', 'member', 'members', 'president', 'vice president', 'secretary', 'treasurer', 'lead', 'executive', 'board', 'who', 'faculty', 'advisor', 'committee', 'leadership'],
-            page: 'team.html',
-            pageLabel: 'Meet the Team',
-            reply: function () {
-                var data = getData();
-                var team = data.team || [];
-                var execs = team.filter(function (m) { return m.type === 'exec'; });
-
-                if (team.length === 0) {
-                    return '<p>Team info is being updated — check the Team page for the latest details.</p>';
-                }
-
-                var lines = execs.slice(0, 4).map(function (m) {
-                    return '<p><strong>' + esc(m.name) + '</strong> — ' + esc(m.role) + '</p>';
-                });
-
-                return '<p>Here\'s a snapshot of our executive team:</p>' +
-                    lines.join('') +
-                    (team.length > execs.length
-                        ? '<p>There are also ' + (team.length - execs.length) + ' board members. Check the full team page for everyone!</p>'
-                        : '');
-            }
-        },
-
-        /* ── Projects ─────────────────────────────────────────── */
-        {
-            keywords: ['project', 'projects', 'build', 'built', 'portfolio', 'app', 'application', 'software', 'github', 'work'],
-            page: 'projects.html',
-            pageLabel: 'See All Projects',
-            reply: function () {
-                var data = getData();
-                var projects = data.projects || [];
-
-                if (projects.length === 0) {
-                    return '<p>We\'re finalising our project showcase — come back soon to see what we\'ve built! 🛠️</p>';
-                }
-
-                var lines = projects.slice(0, 3).map(function (p) {
-                    return '<p><strong>' + esc(p.title) + '</strong> ' +
-                        (p.description ? '— ' + esc(p.description) : '') + '</p>';
-                });
-
-                return '<p>We\'ve built some cool stuff! Here\'s a quick look:</p>' + lines.join('');
-            }
-        },
-
-        /* ── Blog ─────────────────────────────────────────────── */
-        {
-            keywords: ['blog', 'article', 'post', 'read', 'write', 'insight', 'tutorial', 'news', 'tech', 'writing'],
-            page: 'blog.html',
-            pageLabel: 'Read our Blog',
-            reply: function () {
-                var data = getData();
-                var blogs = data.blog || [];
-
-                if (blogs.length === 0) {
-                    return '<p>No blog posts are up yet — our writers are cooking something great! ✍️</p>';
-                }
-
-                var lines = blogs.slice(0, 3).map(function (b) {
-                    return '<p><strong>' + esc(b.title) + '</strong>' +
-                        (b.date ? ' <em>(' + esc(b.date) + ')</em>' : '') + '</p>';
-                });
-
-                return '<p>Check out our latest posts:</p>' + lines.join('');
-            }
-        },
-
-        /* ── Resources ────────────────────────────────────────── */
-        {
-            keywords: ['resource', 'resources', 'material', 'download', 'pdf', 'guide', 'handbook', 'starter', 'kit', 'learn', 'learning'],
-            page: 'resources.html',
-            pageLabel: 'Browse Resources',
-            reply: function () {
-                var data = getData();
-                var resources = data.resources || [];
-
-                if (resources.length === 0) {
-                    return '<p>Resources are being uploaded — check back soon! 📚</p>';
-                }
-
-                var lines = resources.slice(0, 3).map(function (r) {
-                    return '<p><strong>' + esc(r.title) + '</strong>' +
-                        (r.description ? ' — ' + esc(r.description) : '') + '</p>';
-                });
-
-                return '<p>Here are some free resources we\'ve shared:</p>' + lines.join('');
-            }
-        },
-
-        /* ── Join / Membership ────────────────────────────────── */
-        {
-            keywords: ['join', 'member', 'membership', 'apply', 'register', 'sign up', 'signup', 'enroll', 'enrol', 'how to join', 'registration', 'fee', 'free'],
-            page: 'index.html#contact',
-            pageLabel: 'Apply Now',
-            reply: function () {
-                return '<p>Joining the TSA IT Club is <strong>free</strong> for all TSA College students! 🎉</p>' +
-                    '<p>We welcome every skill level — from complete beginners to seasoned developers. Just fill out the short membership form and you\'re in.</p>';
-            }
-        },
-
-        /* ── About / Mission / Vision ─────────────────────────── */
-        {
-            keywords: ['about', 'mission', 'vision', 'goal', 'purpose', 'what is', 'tsa', 'it club', 'club', 'who are you', 'what do you do'],
-            page: 'index.html#about',
-            pageLabel: 'Learn More About Us',
-            reply: function () {
-                return '<p><strong>TSA IT Club</strong> is the official technology club of TSA College. 💻</p>' +
-                    '<p>Our <strong>mission</strong> is to empower students with practical, industry-relevant tech skills through hands-on projects and collaborative learning.</p>' +
-                    '<p>Our <strong>vision</strong> is to be the leading hub for tech innovation on campus and beyond.</p>';
-            }
-        },
-
-        /* ── Contact / Location ───────────────────────────────── */
-        {
-            keywords: ['contact', 'email', 'reach', 'location', 'address', 'where', 'office', 'social', 'instagram', 'discord', 'twitter'],
-            page: 'index.html#contact',
-            pageLabel: 'Go to Contact',
-            reply: function () {
-                return '<p>You can reach us at:</p>' +
-                    '<p>📧 <strong>contact@tsaitclub.edu</strong></p>' +
-                    '<p>📍 <strong>TSA College, Tech Block B</strong></p>' +
-                    '<p>We\'re also on Instagram, Discord, and Twitter. Check the footer for our social links!</p>';
-            }
-        },
-
-        /* ── FAQ ──────────────────────────────────────────────── */
-        {
-            keywords: ['faq', 'question', 'questions', 'common', 'beginner', 'code', 'coding', 'experience', 'need'],
-            page: 'index.html#faq',
-            pageLabel: 'View FAQs',
-            reply: function () {
-                return '<p>Great question! Here are some quick answers:</p>' +
-                    '<p>🔹 <strong>Who can join?</strong> Any TSA College student!</p>' +
-                    '<p>🔹 <strong>Do I need to code?</strong> Not at all — we have design, video, and management roles too.</p>' +
-                    '<p>🔹 <strong>Is it free?</strong> Yes, membership is completely free.</p>' +
-                    '<p>🔹 <strong>How many events per year?</strong> At least 5 major events!</p>';
-            }
-        },
-
-        /* ── Help / What can you do ───────────────────────────── */
-        {
-            keywords: ['help', 'what can you do', 'options', 'menu', 'commands', 'list'],
-            reply: function () {
-                return '<p>I can answer questions about:</p>' +
-                    '<p>📅 <strong>Events</strong> — upcoming workshops, hackathons</p>' +
-                    '<p>👥 <strong>Team</strong> — executive & board members</p>' +
-                    '<p>🛠️ <strong>Projects</strong> — our built applications</p>' +
-                    '<p>📖 <strong>Blog</strong> — tech articles & tutorials</p>' +
-                    '<p>📚 <strong>Resources</strong> — free downloadable guides</p>' +
-                    '<p>🚀 <strong>Joining</strong> — how to become a member</p>' +
-                    '<p>Just ask me anything!</p>';
-            }
-        }
-
-    ]; /* END INTENTS */
-
-    /* ── Intent Matcher ───────────────────────────────────────── */
-
-    /**
-     * Find the best matching intent for a given user message.
-     * Returns the matched intent object, or null if no match.
-     */
-    function matchIntent(input) {
-        var lower = input.toLowerCase().trim();
-        var best = null;
-        var bestScore = 0;
-
-        INTENTS.forEach(function (intent) {
-            var score = 0;
-            intent.keywords.forEach(function (kw) {
-                if (lower.indexOf(kw) !== -1) {
-                    // Longer matches score higher (more specific)
-                    score += kw.length;
-                }
-            });
-            if (score > bestScore) {
-                bestScore = score;
-                best = intent;
-            }
-        });
-
-        return bestScore > 0 ? best : null;
-    }
+    // URL of our local backend (later this will be the Render URL)
+    const BACKEND_URL = 'http://localhost:3000/chat';
 
     /* ── DOM References ───────────────────────────────────────── */
 
@@ -414,21 +183,7 @@
     /* ── Response Logic ───────────────────────────────────────── */
 
     /**
-     * Build and display the bot's response for a matched intent.
-     */
-    function respond(intent) {
-        var html = intent.reply();
-
-        // Append page redirect button if this intent has one
-        if (intent.page) {
-            html += redirectBtn(intent.page, intent.pageLabel || 'Take me there');
-        }
-
-        appendMessage(html, 'bot');
-    }
-
-    /**
-     * Main entry: process a user message end-to-end.
+     * Main entry: process a user message via the Gemini API backend
      */
     function handleUserMessage(text) {
         text = text.trim();
@@ -437,24 +192,40 @@
         // Show user bubble
         appendMessage(esc(text), 'user');
 
-        // Simulate a short "thinking" delay
-        var delay = 600 + Math.random() * 400; // 600–1000 ms
+        // Minimum delay indicator so it feels natural
+        var indicatorPromise = showTyping(300); // just to show it immediately
 
-        showTyping(delay).then(function () {
-            var intent = matchIntent(text);
+        // Disable input while waiting
+        input.disabled = true;
 
-            if (intent) {
-                respond(intent);
-            } else {
-                // Fallback when no keyword matched
-                appendMessage(
-                    '<p>I\'m not sure I understand that. 🤔 Here\'s what I <em>can</em> help with:</p>' +
-                    '<p>Try asking about <strong>events, team, projects, blog, resources,</strong> or <strong>how to join</strong>.</p>',
-                    'bot'
-                );
-                appendSuggestions(['Upcoming events', 'Meet the team', 'Our projects', 'How to join']);
-            }
-        });
+        fetch(BACKEND_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text })
+        })
+            .then(response => response.json())
+            .then(data => {
+                indicatorPromise.then(() => {
+                    if (data.error) {
+                        appendMessage(`<p class="chatbot-error">${esc(data.error)}</p>`, 'bot');
+                    } else {
+                        // Make sure reply from AI is parsed correctly — it may contain markdown, 
+                        // but we asked for simple HTML in the system prompt.
+                        // To be safe against basic XSS, we rely on the backend, but we'll print as HTML.
+                        appendMessage(data.reply, 'bot');
+                    }
+                    input.disabled = false;
+                    input.focus();
+                });
+            })
+            .catch(err => {
+                indicatorPromise.then(() => {
+                    console.error("Chatbot Error:", err);
+                    appendMessage("<p>Oops! I couldn't connect to my brain. Please try again later. 🔌</p>", 'bot');
+                    input.disabled = false;
+                    input.focus();
+                });
+            });
     }
 
     /* ── Input Handling ───────────────────────────────────────── */
