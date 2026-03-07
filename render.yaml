@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: tsa-bot-backend
+    env: node
+    plan: free
+    # Tells Render to look inside the backend/ folder for the code
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false # You will set this in the Render Dashboard
