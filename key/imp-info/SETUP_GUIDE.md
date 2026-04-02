@@ -28,6 +28,7 @@
 | `Projects`  | ✅                 |
 | `Resources` | ✅                 |
 | `Team`      | ✅                 |
+| `Legacy`    | ✅                 |
 
 ### Add column headers — Row 1 of each tab:
 
@@ -63,10 +64,20 @@ title	description	icon	downloadLink
 **Team:**
 
 ```
-name	role	type	avatarInitial	gradient	image	linkedin	github	email	about	skills
+name	role	type	avatarInitial	gradient	image	linkedin	github	email	x	facebook	instagram	youtube	tiktok	about	skills
 ```
 
 > `type`: exactly `exec` or `board`
+
+**Legacy:**
+
+```
+name	role	type	En-year	Np-year	avatarInitial	gradient	image	linkedin	github	email	x	facebook	instagram	youtube	tiktok	about	skills
+```
+
+> `type`: e.g. `exec`, `board`, `member`
+> `En-year`: e.g. `2024`
+> `Np-year`: e.g. `2079`
 
 ---
 

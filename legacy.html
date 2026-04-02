@@ -1,0 +1,448 @@
+<html>
+    <head>
+        <title>
+            Former Members
+        </title>
+    </head>
+        <link rel="stylesheet" href="css/style.css" />
+         <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/chatbot.css" />
+    <body>
+    <div id="preloader">
+      <div class="loader-content">
+        <div class="loader-logo"><i class="fa-solid fa-code"></i></div>
+        <h2>TSA <span class="gradient-text">IT Club</span></h2>
+        <div class="loader-bar"></div>
+      </div>
+    </div>
+
+    <div class="glow-container">
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+    </div>
+
+     <nav id="navbar">
+      <div class="nav-content">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="legacy.html" class="active-page">Legacy</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li>
+            <button
+              id="theme-toggle"
+              class="theme-btn"
+              aria-label="Toggle Dark/Light Mode"
+            >
+              <i class="fa-solid fa-sun"></i>
+            </button>
+          </li>
+          <li>
+            <a href="index.html#contact" class="btn-primary-sm">Join Us</a>
+          </li>
+        </ul>
+        <div
+          class="hamburger"
+          role="button"
+          tabindex="0"
+          aria-label="Toggle Navigation Menu"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <section id="legacy" class="section page-hero">
+      <div class="section-header reveal">
+        <h2>Legacy of <span class="gradient-text">Leadership</span></h2>
+        <p>Honoring our past presidents and board members.</p>
+        
+        <div class="legacy-controls glass-panel" style="display:flex; gap:1rem; justify-content:center; align-items:center; padding: 1rem; border-radius: 12px; max-width: 400px; margin: 1.5rem auto 0; flex-wrap: wrap;">
+          <div style="display:flex; align-items:center; gap: 0.5rem;">
+            <label style="font-size:0.9rem; color: #a0aec0;">Date:</label>
+            <select id="date-toggle" style="background: rgba(0,0,0,0.3); color: white; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 0.4rem; outline: none; cursor:pointer;">
+              <option value="En">AD (English)</option>
+              <option value="Np">BS (Nepali)</option>
+            </select>
+          </div>
+          <div style="display:flex; align-items:center; gap: 0.5rem;">
+            <label style="font-size:0.9rem; color: #a0aec0;">Sort:</label>
+            <select id="sort-toggle" style="background: rgba(0,0,0,0.3); color: white; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 0.4rem; outline: none; cursor:pointer;">
+              <option value="desc">Newest First</option>
+              <option value="asc">Oldest First</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div id="dynamic-legacy-sections" style="width: 100%;"></div>
+    </section>
+
+    <!-- Single generic modal (will be filled dynamically) -->
+    <div class="modal-overlay" id="team-modal">
+      <div class="modal-content team-modal-content">
+        <button class="modal-close" aria-label="Close Modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="team-modal-header">
+          <img src="" alt="" class="team-modal-img" id="modal-avatar" />
+          <div class="team-modal-info">
+            <h3 id="modal-name"></h3>
+            <p class="role" id="modal-role"></p>
+            <div class="social-links-modal" id="modal-social"></div>
+          </div>
+        </div>
+        <div class="team-modal-body">
+          <h4>About</h4>
+          <p id="modal-about"></p>
+          <h4>Skills</h4>
+          <p id="modal-skills"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Expansion Lightbox -->
+    <div class="modal-overlay" id="lightbox-modal" style="z-index: 2000; background: rgba(0,0,0,0.9);">
+      <button class="lightbox-close" aria-label="Close Lightbox" style="position: absolute; top: 20px; right: 30px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; text-shadow: 0 0 10px rgba(0,0,0,0.5);">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img src="" alt="Full Screen Profile" id="lightbox-img" style="max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: zoom-out;">
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-sections">
+          <div class="footer-brand">
+            <img src="images/logo.png" alt="TSA IT Club Logo" class="club-logo-img" />
+            <p>Innovating the future, one line of code at a time.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="blog.html">Tech Insights</a></li>
+              <li><a href="events.html">Upcoming Events</a></li>
+              <li><a href="resources.html">Resources</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 TSA IT Club. All rights reserved.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="toast-container"></div>
+    <button
+      id="back-to-top"
+      class="back-to-top"
+      aria-label="Scroll back to top"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+      <!-- ── Chatbot Widget ───────────────────────────────────────── -->
+  <!-- Toggle button fixed at bottom-right -->
+  <button id="chatbot-toggle" aria-label="Open Club Assistant Chatbot">
+    <i class="fa-solid fa-robot"></i>
+  </button>
+
+  <!-- Chatbot window -->
+  <div id="chatbot-window" role="dialog" aria-label="TSA IT Club Assistant">
+    <!-- Header -->
+    <div id="chatbot-header">
+      <div class="chatbot-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="chatbot-header-info">
+        <h4>TSA Bot</h4>
+        <span class="chatbot-status">
+          <span class="chatbot-status-dot"></span> Online
+        </span>
+      </div>
+      <button id="chatbot-close" aria-label="Close chatbot">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Message area -->
+    <div id="chatbot-messages"></div>
+
+    <!-- Input area -->
+    <div id="chatbot-input-area">
+      <input id="chatbot-input" type="text" placeholder="Ask me anything about the club..." autocomplete="off"
+        maxlength="200" />
+      <button id="chatbot-send" aria-label="Send message">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+    <script src="js/chatbot.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/sheets-config.js"></script>
+    <script src="js/sheets-sync.js"></script>
+    <script>
+      var currentSort = "desc";
+      var currentDateType = "En";
+      var legacyRawData = [];
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("date-toggle").addEventListener("change", function(e) {
+          currentDateType = e.target.value;
+          renderLegacy();
+        });
+        document.getElementById("sort-toggle").addEventListener("change", function(e) {
+          currentSort = e.target.value;
+          renderLegacy();
+        });
+
+        var container = document.getElementById("dynamic-legacy-sections");
+        if (container) container.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading legacy members...</p>';
+
+        window.SheetSync.load("legacy", function (members) {
+          legacyRawData = members;
+          renderLegacy();
+        });
+      });
+
+      function renderLegacy() {
+        var container = document.getElementById("dynamic-legacy-sections");
+        if (!container) return;
+        if (!legacyRawData || legacyRawData.length === 0) {
+          container.innerHTML =
+            '<div style="text-align:center;padding:2rem 1rem;">' +
+            '<i class="fa-solid fa-history" style="font-size:2.5rem;opacity:0.3;margin-bottom:0.75rem;display:block;"></i>' +
+            '<p style="opacity:0.6;">No legacy members listed yet.</p></div>';
+          return;
+        }
+
+        var yearKey = currentDateType === "En" ? "En-year" : "Np-year";
+        var yearsMap = {};
+        legacyRawData.forEach(function(m) {
+          var y = m[yearKey] || m["En-year"] || m["Np-year"] || "Unknown";
+          if (!yearsMap[y]) yearsMap[y] = [];
+          yearsMap[y].push(m);
+        });
+
+        var years = Object.keys(yearsMap).sort(function(a, b) {
+          var na = parseInt(a), nb = parseInt(b);
+          if(!isNaN(na) && !isNaN(nb)) {
+            return currentSort === "desc" ? nb - na : na - nb;
+          }
+          return currentSort === "desc" ? b.localeCompare(a) : a.localeCompare(b);
+        });
+
+        var html = "";
+        years.forEach(function(y) {
+          html += '<div style="margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">';
+          html += '<h2 class="gradient-text reveal" style="text-align:center; font-size: 2.2rem; margin-bottom: 2rem;">' + y + ' Generation</h2>';
+          
+          var membersInYear = yearsMap[y];
+          var typeMap = {};
+          var order = ["exec", "board"];
+          membersInYear.forEach(function(m) {
+            var t = m.type || "other";
+            if (!typeMap[t]) { typeMap[t] = []; if(order.indexOf(t) === -1) order.push(t); }
+            typeMap[t].push(m);
+          });
+
+          order.forEach(function(type) {
+            var group = typeMap[type];
+            if (!group || group.length === 0) return;
+            
+            var typeTitle = type === "exec" ? "Executives" : 
+                            type === "board" ? "Board Members" : 
+                            type.charAt(0).toUpperCase() + type.slice(1);
+            
+            if (type === "exec") {
+              html += '<div class="mobile-member-list reveal" style="max-width: 800px; margin: 0 auto 40px auto">';
+              html += '<p class="mobile-list-label mobile-list-label--exec" style="text-align:left;">\uD83D\uDC51 ' + typeTitle + '</p>';
+              
+              group.forEach(function (m) {
+                var avatarHtml = m.image
+                  ? '<img src="' + m.image + '" class="mobile-member-avatar" style="object-fit:cover; aspect-ratio:1/1;">'
+                  : '<div class="mobile-member-avatar" style="background:' + (m.gradient || "#3b82f6") + '">' + (m.avatarInitial || "?") + "</div>";
+                var nicknameHtml = m.nickname ? '<br><span class="member-nickname">aka ' + m.nickname + '</span>' : '';
+                
+                html +=
+                  '<div class="mobile-member-row mobile-member-row--exec"' +
+                  ' data-name="'     + (m.name     || "") + '"' +
+                  ' data-nickname="' + (m.nickname || "") + '"' +
+                  ' data-role="'     + (m.role     || "") + '"' +
+                  ' data-image="'    + (m.image    || "") + '"' +
+                  ' data-avatar="'   + (m.avatarInitial || "") + '"' +
+                  ' data-linkedin="' + (m.linkedin || "") + '"' +
+                  ' data-github="'   + (m.github   || "") + '"' +
+                  ' data-email="'    + (m.email    || "") + '"' +
+                  ' data-x="'        + (m.x        || "") + '"' +
+                  ' data-facebook="' + (m.facebook || "") + '"' +
+                  ' data-instagram="'+ (m.instagram|| "") + '"' +
+                  ' data-youtube="'  + (m.youtube  || "") + '"' +
+                  ' data-tiktok="'   + (m.tiktok   || "") + '"' +
+                  ' data-about="'    + (m.about    || "") + '"' +
+                  ' data-skills="'   + (m.skills   || "") + '">' +
+                  avatarHtml +
+                  '<div class="mobile-member-info"><strong>' + (m.name || "?") + nicknameHtml + "</strong><span>" + (m.role || "") + "</span></div>" +
+                  '<i class="fa-solid fa-chevron-right"></i>' +
+                  "</div>";
+              });
+              html += '</div>';
+            } else {
+              html += '<h3 class="board-title reveal">' + typeTitle + '</h3>';
+              
+              html += '<div class="board-grid reveal">';
+              group.forEach(function(m) {
+                var nicknameHtml = m.nickname ? '<br><span class="member-nickname">aka ' + m.nickname + '</span>' : '';
+                html +=
+                  '<div class="board-card glass-panel"' +
+                  ' data-name="'     + (m.name     || "") + '"' +
+                  ' data-nickname="' + (m.nickname || "") + '"' +
+                  ' data-role="'     + (m.role     || "") + '"' +
+                  ' data-image="'    + (m.image    || "") + '"' +
+                  ' data-avatar="'   + (m.avatarInitial || "") + '"' +
+                  ' data-linkedin="' + (m.linkedin || "") + '"' +
+                  ' data-github="'   + (m.github   || "") + '"' +
+                  ' data-email="'    + (m.email    || "") + '"' +
+                  ' data-x="'        + (m.x        || "") + '"' +
+                  ' data-facebook="' + (m.facebook || "") + '"' +
+                  ' data-instagram="'+ (m.instagram|| "") + '"' +
+                  ' data-youtube="'  + (m.youtube  || "") + '"' +
+                  ' data-tiktok="'   + (m.tiktok   || "") + '"' +
+                  ' data-about="'    + (m.about    || "") + '"' +
+                  ' data-skills="'   + (m.skills   || "") + '">';
+                  
+                var avatarHtml = m.image
+                  ? '<img src="' + m.image + '" style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin:0 auto 1.2rem; display:block; border:2px solid rgba(255,255,255,0.1);">'
+                  : '<div style="width:120px; height:120px; border-radius:50%; margin:0 auto 1.2rem; background:' + (m.gradient || "#3b82f6") + '; display:flex; align-items:center; justify-content:center; font-size:3rem; font-weight:700;">' + (m.avatarInitial || "?") + "</div>";
+                  
+                html += avatarHtml;
+                html += "<h4>" + (m.name || "?") + nicknameHtml + "</h4>";
+                html += '<p class="role-sm">' + (m.role || "") + "</p>";
+                html += "</div>";
+              });
+              html += '</div>';
+            }
+          });
+          html += '</div>';
+        });
+
+        container.innerHTML = html;
+        if(typeof window.refreshReveals === 'function') window.refreshReveals();
+        attachModalTriggers();
+      }
+
+      function attachModalTriggers() {
+        var triggers = document.querySelectorAll(".mobile-member-row, .board-card");
+        triggers.forEach(function (el) {
+          el.addEventListener("click", function () {
+            var name     = el.dataset.name;
+            var nickname = el.dataset.nickname;
+            var role     = el.dataset.role;
+            var image    = el.dataset.image;
+            var linkedin = el.dataset.linkedin;
+            var github   = el.dataset.github;
+            var email    = el.dataset.email;
+            var x        = el.dataset.x;
+            var facebook = el.dataset.facebook;
+            var instagram= el.dataset.instagram;
+            var youtube  = el.dataset.youtube;
+            var tiktok   = el.dataset.tiktok;
+            var about    = el.dataset.about  || "No information provided.";
+            var skills   = el.dataset.skills || "—";
+
+            var displayName = nickname ? name + " <br><span class='member-nickname'>aka " + nickname + "</span>" : name;
+            document.getElementById("modal-name").innerHTML   = displayName;
+            document.getElementById("modal-role").innerText   = role;
+            document.getElementById("modal-about").innerText  = about;
+            document.getElementById("modal-skills").innerText = skills;
+
+            var avatarImg = document.getElementById("modal-avatar");
+            avatarImg.src = image
+              ? image
+              : "https://ui-avatars.com/api/?name=" + encodeURIComponent(name) + "&background=random&color=fff&size=128";
+
+            var socialHtml = "";
+            if (linkedin && linkedin !== "#" && linkedin.trim() !== "")
+              socialHtml += '<a href="' + linkedin + '" target="_blank"><i class="fa-brands fa-linkedin"></i></a>';
+            if (github && github !== "#" && github.trim() !== "")
+              socialHtml += '<a href="' + github + '" target="_blank"><i class="fa-brands fa-github"></i></a>';
+            if (email && email !== "#" && email.trim() !== "")
+              socialHtml += '<a href="mailto:' + email + '"><i class="fa-solid fa-envelope"></i></a>';
+            if (x && x !== "#" && x.trim() !== "")
+              socialHtml += '<a href="' + x + '" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>';
+            if (facebook && facebook !== "#" && facebook.trim() !== "")
+              socialHtml += '<a href="' + facebook + '" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>';
+            if (instagram && instagram !== "#" && instagram.trim() !== "")
+              socialHtml += '<a href="' + instagram + '" target="_blank"><i class="fa-brands fa-instagram"></i></a>';
+            if (youtube && youtube !== "#" && youtube.trim() !== "")
+              socialHtml += '<a href="' + youtube + '" target="_blank"><i class="fa-brands fa-youtube"></i></a>';
+            if (tiktok && tiktok !== "#" && tiktok.trim() !== "")
+              socialHtml += '<a href="' + tiktok + '" target="_blank"><i class="fa-brands fa-tiktok"></i></a>';
+            document.getElementById("modal-social").innerHTML = socialHtml;
+
+            document.getElementById("team-modal").classList.add("active");
+            document.body.style.overflow = "hidden";
+          });
+        });
+      }
+
+      document.querySelectorAll(".modal-close").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.getElementById("team-modal").classList.remove("active");
+          document.body.style.overflow = "";
+        });
+      });
+      window.addEventListener("click", function (e) {
+        if (e.target.classList.contains("modal-overlay")) {
+          if (e.target.id === "lightbox-modal") {
+            document.getElementById("lightbox-modal").classList.remove("active");
+            if (!document.getElementById("team-modal").classList.contains("active")) {
+                document.body.style.overflow = "";
+            }
+          } else {
+            document.getElementById("team-modal").classList.remove("active");
+            document.body.style.overflow = "";
+          }
+        }
+      });
+      var modalAvatar = document.getElementById("modal-avatar");
+      modalAvatar.addEventListener("mouseover", function() {
+          if (this.src && !this.src.includes("ui-avatars.com")) this.style.cursor = "zoom-in";
+          else this.style.cursor = "default";
+      });
+      modalAvatar.addEventListener("click", function() {
+          var currentSrc = this.src;
+          if (currentSrc && !currentSrc.includes("ui-avatars.com")) {
+              document.getElementById("lightbox-img").src = currentSrc;
+              document.getElementById("lightbox-modal").classList.add("active");
+              document.body.style.overflow = "hidden";
+          }
+      });
+      document.querySelector(".lightbox-close").addEventListener("click", function() {
+          document.getElementById("lightbox-modal").classList.remove("active");
+          if (!document.getElementById("team-modal").classList.contains("active")) {
+            document.body.style.overflow = "";
+          }
+      });
+    </script>
+    <script src="js/script.js"></script>
+    </body>
+</html>

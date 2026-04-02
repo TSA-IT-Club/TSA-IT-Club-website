@@ -16,7 +16,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="css/chatbot.css" />
 </head>
@@ -48,6 +48,7 @@
           <li><a href="events.html">Events</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="team.html" class="active-page">Team</a></li>
+          <li><a href="legacy.html">Legacy</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li>
@@ -258,6 +259,11 @@
                   ' data-linkedin="' + (m.linkedin || "") + '"' +
                   ' data-github="'   + (m.github   || "") + '"' +
                   ' data-email="'    + (m.email    || "") + '"' +
+                  ' data-x="'        + (m.x        || "") + '"' +
+                  ' data-facebook="' + (m.facebook || "") + '"' +
+                  ' data-instagram="'+ (m.instagram|| "") + '"' +
+                  ' data-youtube="'  + (m.youtube  || "") + '"' +
+                  ' data-tiktok="'   + (m.tiktok   || "") + '"' +
                   ' data-about="'    + (m.about    || "") + '"' +
                   ' data-skills="'   + (m.skills   || "") + '">' +
                   avatarHtml +
@@ -338,6 +344,11 @@
             var linkedin = el.dataset.linkedin;
             var github   = el.dataset.github;
             var email    = el.dataset.email;
+            var x        = el.dataset.x;
+            var facebook = el.dataset.facebook;
+            var instagram= el.dataset.instagram;
+            var youtube  = el.dataset.youtube;
+            var tiktok   = el.dataset.tiktok;
             var about    = el.dataset.about  || "No information provided.";
             var skills   = el.dataset.skills || "—";
 
@@ -353,12 +364,22 @@
               : "https://ui-avatars.com/api/?name=" + encodeURIComponent(name) + "&background=random&color=fff&size=128";
 
             var socialHtml = "";
-            if (linkedin && linkedin !== "#")
+            if (linkedin && linkedin !== "#" && linkedin.trim() !== "")
               socialHtml += '<a href="' + linkedin + '" target="_blank"><i class="fa-brands fa-linkedin"></i></a>';
-            if (github && github !== "#")
+            if (github && github !== "#" && github.trim() !== "")
               socialHtml += '<a href="' + github + '" target="_blank"><i class="fa-brands fa-github"></i></a>';
             if (email && email !== "#" && email.trim() !== "")
               socialHtml += '<a href="mailto:' + email + '"><i class="fa-solid fa-envelope"></i></a>';
+            if (x && x !== "#" && x.trim() !== "")
+              socialHtml += '<a href="' + x + '" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>';
+            if (facebook && facebook !== "#" && facebook.trim() !== "")
+              socialHtml += '<a href="' + facebook + '" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>';
+            if (instagram && instagram !== "#" && instagram.trim() !== "")
+              socialHtml += '<a href="' + instagram + '" target="_blank"><i class="fa-brands fa-instagram"></i></a>';
+            if (youtube && youtube !== "#" && youtube.trim() !== "")
+              socialHtml += '<a href="' + youtube + '" target="_blank"><i class="fa-brands fa-youtube"></i></a>';
+            if (tiktok && tiktok !== "#" && tiktok.trim() !== "")
+              socialHtml += '<a href="' + tiktok + '" target="_blank"><i class="fa-brands fa-tiktok"></i></a>';
             document.getElementById("modal-social").innerHTML = socialHtml;
 
             document.getElementById("team-modal").classList.add("active");

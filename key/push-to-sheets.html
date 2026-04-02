@@ -8,8 +8,8 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="images/logo.png" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="../images/logo.png" />
+    <link rel="stylesheet" href="../css/style.css" />
     <style>
       /* ── Base ── */
       *,
@@ -199,7 +199,7 @@
         color: rgba(226, 232, 240, 0.7);
       }
     </style>
-    <link rel="stylesheet" href="css/chatbot.css" />
+    <link rel="stylesheet" href="../css/chatbot.css" />
 </head>
   <body>
     <div class="card">
@@ -226,11 +226,11 @@
 
       <div class="log-box" id="log-box"></div>
 
-      <a href="index.html" class="back-link">← Back to website</a>
+      <a href="../index.html" class="back-link">← Back to website</a>
     </div>
 
     <!-- Load config and data files -->
-    <script src="js/sheets-config.js"></script>
+    <script src="../js/sheets-config.js"></script>
       <!-- ── Chatbot Widget ───────────────────────────────────────── -->
   <!-- Toggle button fixed at bottom-right -->
   <button id="chatbot-toggle" aria-label="Open Club Assistant Chatbot">
@@ -267,15 +267,15 @@
   </div>
   <!-- ── End Chatbot Widget ────────────────────────────────────── -->
 
-  <script src="js/chatbot.js"></script>
+  <script src="../js/chatbot.js"></script>
 
-  <script src="js/data.js"></script>
-    <script src="js/sheets-sync.js"></script>
-    <script src="js/script.js"></script>
+  <script src="../js/data.js"></script>
+    <script src="../js/sheets-sync.js"></script>
+    <script src="../js/script.js"></script>
 
     <script>
       // ── Init ─────────────────────────────────────────────
-      const SECTIONS = ["events", "blog", "projects", "resources", "team"];
+      const SECTIONS = ["events", "blog", "projects", "resources", "team", "legacy"];
       const statusEls = {};
 
       function log(msg, type) {

@@ -107,7 +107,7 @@
     </div>
 
     <!-- Ensure config is loaded first -->
-    <script src="js/sheets-config.js"></script>
+    <script src="../js/sheets-config.js"></script>
 
     <script>
         async function generateDataFile() {
@@ -126,7 +126,7 @@
                 }
 
                 const scriptUrl = SHEETS_CONFIG.scriptUrl;
-                const tabs = ['Events', 'Blog', 'Projects', 'Resources', 'Team'];
+                const tabs = ['Events', 'Blog', 'Projects', 'Resources', 'Team', 'Legacy'];
                 const siteData = {};
 
                 for (const tab of tabs) {
@@ -150,7 +150,7 @@
                         }
                         return out;
                     }).filter(row => {
-                        const titleKey = (tab === 'Team') ? 'name' : 'title';
+                        const titleKey = (tab === 'Team' || tab === 'Legacy') ? 'name' : 'title';
                         return row[titleKey] && String(row[titleKey]).trim() !== '';
                     });
                 }

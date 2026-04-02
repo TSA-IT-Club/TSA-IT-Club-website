@@ -67,7 +67,7 @@
           : [];
       }
     }
-    if (section === "team") {
+    if (section === "team" || section === "legacy") {
       if (out.type) out.type = out.type.toLowerCase().trim();
     }
     return out;
@@ -75,7 +75,7 @@
 
   /** Filter out empty rows (where the title/name column is blank) */
   function filterEmpty(section, rows) {
-    var titleKey = (section === "team") ? "name" : "title";
+    var titleKey = (section === "team" || section === "legacy") ? "name" : "title";
     return rows.filter(function (r) {
       return r[titleKey] && String(r[titleKey]).trim() !== "";
     });
