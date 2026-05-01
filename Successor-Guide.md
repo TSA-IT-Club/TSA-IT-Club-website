@@ -50,15 +50,4 @@ If you navigate to key/update-data.html, you can auto-generate the raw code for 
 
 If you add new developer or private scripts into the /key/ directory natively, simply ensure any <link> tags or <script src="..."> tags that load resources start with ../ instead of simply js/ or css/ so they successfully map outwards into the root directory of the site ecosystem!
 
-
-
-
-
-
-hey there 
-
-i want to improve the ui of the team page a bit instead a 4 coloumn grid i want it some what like this in the other than the executives and not just in the board members make this change in both legasy and team and change legesy ui to this as well in other roles than executive make it cover the same amount of space as it is now and make content stay in middle of vertical align
-
-also lets centralise the elements of each role by which i mean i want the same structure as img 2. keep in mind this is just an ammeture photo editing job so only imphasise in the structure.
-
-now for executives part lets keep 2 cardes in one row. do this in both the team page and the legasy page. the full crude structure is given in img 3.
+where is the mobile interface for the legacy page and lets design the cards for the it club members to be different than the

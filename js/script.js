@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(joinModal, { attributes: true });
     }
 
-    // --- 12. Form Submission Handling with Toasts ---
+    // --- 12. Form Submission Handling with Toasts (Dual Submit) ---
     const joinForm = document.getElementById('join-form');
     if (joinForm) {
         joinForm.addEventListener('submit', async (e) => {
@@ -336,11 +336,42 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             try {
-                const response = await fetch('https://formspree.io/f/meelwjol', {
+                // Formspree payload
+                const formData = new FormData(joinForm);
+                
+                // Form submission to Formspree
+                const formspreePromise = fetch('https://formspree.io/f/meelwjol', {
                     method: 'POST',
-                    body: new FormData(joinForm),
+                    body: formData,
                     headers: { 'Accept': 'application/json' }
                 });
+
+                // Google Apps Script payload for Members tab
+                if (typeof SHEETS_CONFIG !== "undefined" && SHEETS_CONFIG.enabled && SHEETS_CONFIG.scriptUrl && SHEETS_CONFIG.scriptUrl !== "YOUR-SCRIPT-URL") {
+                    const appsScriptPayload = {
+                        action: "write",
+                        sheet: "Members",
+                        token: "TSA_CLUB_SECRET_2026",
+                        data: [{
+                            name: formData.get("name") || "",
+                            email: formData.get("email") || "",
+                            phone: formData.get("phone") || "",
+                            role: formData.get("primary_interest") || "",
+                            skills: formData.get("experience_level") || "",
+                            about: formData.get("motivation") || "",
+                            avatarInitial: (formData.get("name") || "?").charAt(0).toUpperCase()
+                        }]
+                    };
+
+                    fetch(SHEETS_CONFIG.scriptUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: JSON.stringify(appsScriptPayload),
+                        headers: { 'Content-Type': 'application/json' }
+                    }).catch(console.error); // Do not block if Apps Script fails silently
+                }
+
+                const response = await formspreePromise;
 
                 if (response.ok) {
                     showToast('Application Sent!', 'Welcome to the club. We will be in touch soon.');
@@ -634,7 +665,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Global Cache Pre-fetcher ---
     if (window.SheetSync && typeof window.SheetSync.load === 'function') {
-        const sectionsToFetch = ['events', 'blog', 'projects', 'resources', 'team'];
+        const sectionsToFetch = ['events', 'blog', 'projects', 'resources', 'team', 'members'];
         sectionsToFetch.forEach(section => {
             window.SheetSync.load(section, () => {});
         });

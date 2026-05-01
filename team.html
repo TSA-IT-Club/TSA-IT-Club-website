@@ -84,6 +84,7 @@
 
       <!-- Dynamic containers (Generated via JS) -->
       <div id="dynamic-team-sections" style="width: 100%;"></div>
+      <div id="dynamic-active-members" style="width: 100%;"></div>
     </section>
 
     <!-- Single generic modal (will be filled dynamically) -->
@@ -240,8 +241,9 @@
 
             // Executives use list view, others use grid view (desktop) / list (mobile)
             if (type === "exec") {
-              var execHtml = '<div class="mobile-member-list reveal" style="max-width: 800px; margin: 0 auto 40px auto">';
-              execHtml += '<p class="mobile-list-label mobile-list-label--exec" style="text-align:left;">\uD83D\uDC51 ' + title + '</p>';
+              var execHtml = '<div class="mobile-member-list reveal" style="max-width: 1000px; margin: 0 auto 40px auto">';
+              execHtml += '<p class="mobile-list-label mobile-list-label--exec" style="text-align:center;">\uD83D\uDC51 ' + title + '</p>';
+              execHtml += '<div class="exec-grid-container">';
               
               group.forEach(function (m) {
                 var avatarHtml = m.image
@@ -271,7 +273,7 @@
                   '<i class="fa-solid fa-chevron-right"></i>' +
                   "</div>";
               });
-              execHtml += '</div>';
+              execHtml += '</div></div>';
               container.innerHTML += execHtml;
             } else {
               // Board / Other
@@ -329,6 +331,97 @@
           });
 
           // Attach modal triggers after DOM is populated
+          attachModalTriggers();
+        });
+
+        // ── Render Active Members via SheetSync ──
+        var activeMembersContainer = document.getElementById("dynamic-active-members");
+        if (activeMembersContainer) activeMembersContainer.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading active members...</p>';
+
+        window.SheetSync.load("members", function (members) {
+          if (!activeMembersContainer) return;
+          var activeMembers = members.filter(function(m) {
+            var isApproved = String(m.approved).toLowerCase();
+            return isApproved === 'true' || isApproved === '1' || isApproved === 'yes';
+          });
+          
+          if (!activeMembers || activeMembers.length === 0) {
+            activeMembersContainer.innerHTML = ''; // Hide section if no approved members
+            return;
+          }
+          
+          // Sort by order 
+          activeMembers.sort(function(a, b) {
+            var orderA = parseInt(a.order) || 999;
+            var orderB = parseInt(b.order) || 999;
+            return orderA - orderB;
+          });
+
+          // Generate HTML
+          var html = '<h3 class="board-title reveal" style="margin-top: 60px;">Active Members</h3>';
+          
+          var desktopHtml = '<div class="board-grid reveal">';
+          var mobileHtml = '<div class="mobile-board-list reveal">';
+          
+          activeMembers.forEach(function(m) {
+            var nicknameHtml = m.nickname ? '<br><span class="member-nickname">aka ' + m.nickname + '</span>' : '';
+            
+            // Desktop
+            desktopHtml +=
+              '<div class="board-card glass-panel"' +
+              ' data-name="'     + (m.name     || "") + '"' +
+              ' data-nickname="' + (m.nickname || "") + '"' +
+              ' data-role="'     + (m.role     || "") + '"' +
+              ' data-image="'    + (m.image    || "") + '"' +
+              ' data-avatar="'   + (m.avatarInitial || "") + '"' +
+              ' data-linkedin="' + (m.linkedin || "") + '"' +
+              ' data-github="'   + (m.github   || "") + '"' +
+              ' data-email="'    + (m.email    || "") + '"' +
+              ' data-x="'        + (m.x        || "") + '"' +
+              ' data-facebook="' + (m.facebook || "") + '"' +
+              ' data-instagram="'+ (m.instagram|| "") + '"' +
+              ' data-youtube="'  + (m.youtube  || "") + '"' +
+              ' data-tiktok="'   + (m.tiktok   || "") + '"' +
+              ' data-about="'    + (m.about    || "") + '"' +
+              ' data-skills="'   + (m.skills   || "") + '">';
+              
+            var avatarHtml = m.image
+              ? '<img src="' + m.image + '" style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin:0 auto 1.2rem; display:block; border:2px solid rgba(255,255,255,0.1);">'
+              : '<div style="width:120px; height:120px; border-radius:50%; margin:0 auto 1.2rem; background:' + (m.gradient || "#3b82f6") + '; display:flex; align-items:center; justify-content:center; font-size:3rem; font-weight:700;">' + (m.avatarInitial || "?") + "</div>";
+              
+            desktopHtml += avatarHtml;
+            desktopHtml += "<h4>" + (m.name || "?") + nicknameHtml + "</h4>";
+            desktopHtml += '<p class="role-sm">' + (m.role || "") + "</p>";
+            desktopHtml += "</div>";
+
+            // Mobile
+            var mobileAvatarHtml = m.image
+              ? '<img src="' + m.image + '" class="mobile-member-avatar" style="object-fit:cover; aspect-ratio:1/1;">'
+              : '<div class="mobile-member-avatar" style="background:' + (m.gradient || "#3b82f6") + '">' + (m.avatarInitial || "?") + "</div>";
+            
+            mobileHtml +=
+              '<div class="mobile-member-row"' +
+              ' data-name="'     + (m.name     || "") + '"' +
+              ' data-nickname="' + (m.nickname || "") + '"' +
+              ' data-role="'     + (m.role     || "") + '"' +
+              ' data-image="'    + (m.image    || "") + '"' +
+              ' data-avatar="'   + (m.avatarInitial || "") + '"' +
+              ' data-linkedin="' + (m.linkedin || "") + '"' +
+              ' data-github="'   + (m.github   || "") + '"' +
+              ' data-email="'    + (m.email    || "") + '"' +
+              ' data-about="'    + (m.about    || "") + '"' +
+              ' data-skills="'   + (m.skills   || "") + '">' +
+              mobileAvatarHtml +
+              '<div class="mobile-member-info"><strong>' + (m.name || "?") + nicknameHtml + "</strong><span>" + (m.role || "") + "</span></div>" +
+              '<i class="fa-solid fa-chevron-right"></i>' +
+              "</div>";
+          });
+          
+          desktopHtml += '</div>';
+          mobileHtml += '</div>';
+          activeMembersContainer.innerHTML = html + desktopHtml + mobileHtml;
+          
+          if(typeof window.refreshReveals === 'function') window.refreshReveals();
           attachModalTriggers();
         });
       });

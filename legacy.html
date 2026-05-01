@@ -273,8 +273,9 @@
                             type.charAt(0).toUpperCase() + type.slice(1);
             
             if (type === "exec") {
-              html += '<div class="mobile-member-list reveal" style="max-width: 800px; margin: 0 auto 40px auto">';
-              html += '<p class="mobile-list-label mobile-list-label--exec" style="text-align:left;">\uD83D\uDC51 ' + typeTitle + '</p>';
+              html += '<div class="mobile-member-list reveal" style="max-width: 1000px; margin: 0 auto 40px auto">';
+              html += '<p class="mobile-list-label mobile-list-label--exec" style="text-align:center;">\uD83D\uDC51 ' + typeTitle + '</p>';
+              html += '<div class="exec-grid-container">';
               
               group.forEach(function (m) {
                 var avatarHtml = m.image
@@ -304,14 +305,17 @@
                   '<i class="fa-solid fa-chevron-right"></i>' +
                   "</div>";
               });
-              html += '</div>';
+              html += '</div></div>';
             } else {
               html += '<h3 class="board-title reveal">' + typeTitle + '</h3>';
               
-              html += '<div class="board-grid reveal">';
+              var desktopHtml = '<div class="board-grid reveal">';
+              var mobileHtml = '<div class="mobile-board-list reveal">';
+              
               group.forEach(function(m) {
+                // Desktop Data
                 var nicknameHtml = m.nickname ? '<br><span class="member-nickname">aka ' + m.nickname + '</span>' : '';
-                html +=
+                desktopHtml +=
                   '<div class="board-card glass-panel"' +
                   ' data-name="'     + (m.name     || "") + '"' +
                   ' data-nickname="' + (m.nickname || "") + '"' +
@@ -333,12 +337,42 @@
                   ? '<img src="' + m.image + '" style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin:0 auto 1.2rem; display:block; border:2px solid rgba(255,255,255,0.1);">'
                   : '<div style="width:120px; height:120px; border-radius:50%; margin:0 auto 1.2rem; background:' + (m.gradient || "#3b82f6") + '; display:flex; align-items:center; justify-content:center; font-size:3rem; font-weight:700;">' + (m.avatarInitial || "?") + "</div>";
                   
-                html += avatarHtml;
-                html += "<h4>" + (m.name || "?") + nicknameHtml + "</h4>";
-                html += '<p class="role-sm">' + (m.role || "") + "</p>";
-                html += "</div>";
+                desktopHtml += avatarHtml;
+                desktopHtml += "<h4>" + (m.name || "?") + nicknameHtml + "</h4>";
+                desktopHtml += '<p class="role-sm">' + (m.role || "") + "</p>";
+                desktopHtml += "</div>";
+
+                // Mobile Data
+                var mobileAvatarHtml = m.image
+                  ? '<img src="' + m.image + '" class="mobile-member-avatar" style="object-fit:cover; aspect-ratio:1/1;">'
+                  : '<div class="mobile-member-avatar" style="background:' + (m.gradient || "#3b82f6") + '">' + (m.avatarInitial || "?") + "</div>";
+                
+                mobileHtml +=
+                  '<div class="mobile-member-row"' +
+                  ' data-name="'     + (m.name     || "") + '"' +
+                  ' data-nickname="' + (m.nickname || "") + '"' +
+                  ' data-role="'     + (m.role     || "") + '"' +
+                  ' data-image="'    + (m.image    || "") + '"' +
+                  ' data-avatar="'   + (m.avatarInitial || "") + '"' +
+                  ' data-linkedin="' + (m.linkedin || "") + '"' +
+                  ' data-github="'   + (m.github   || "") + '"' +
+                  ' data-email="'    + (m.email    || "") + '"' +
+                  ' data-x="'        + (m.x        || "") + '"' +
+                  ' data-facebook="' + (m.facebook || "") + '"' +
+                  ' data-instagram="'+ (m.instagram|| "") + '"' +
+                  ' data-youtube="'  + (m.youtube  || "") + '"' +
+                  ' data-tiktok="'   + (m.tiktok   || "") + '"' +
+                  ' data-about="'    + (m.about    || "") + '"' +
+                  ' data-skills="'   + (m.skills   || "") + '">' +
+                  mobileAvatarHtml +
+                  '<div class="mobile-member-info"><strong>' + (m.name || "?") + nicknameHtml + "</strong><span>" + (m.role || "") + "</span></div>" +
+                  '<i class="fa-solid fa-chevron-right"></i>' +
+                  "</div>";
               });
-              html += '</div>';
+              
+              desktopHtml += '</div>';
+              mobileHtml += '</div>';
+              html += desktopHtml + mobileHtml;
             }
           });
           html += '</div>';
