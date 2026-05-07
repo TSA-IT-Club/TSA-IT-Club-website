@@ -19,6 +19,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="css/chatbot.css" />
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
   <body>
@@ -81,6 +83,29 @@
         <h2>Club <span class="gradient-text">Resources</span></h2>
         <p>Download workshop notes, guides, and project templates.</p>
       </div>
+      
+      <!-- Login / Auth Container -->
+      <div id="auth-container" style="display:none; max-width: 400px; margin: 2rem auto; text-align: center;" class="glass-panel reveal">
+         <i class="fa-solid fa-lock" style="font-size: 3rem; color: #a0aec0; margin-bottom: 1rem;"></i>
+         <h3 style="margin-bottom: 1rem;">Protected Content</h3>
+         <p style="margin-bottom: 2rem; color: #a0aec0;">You need to be an approved member to access club resources.</p>
+         <div id="g_id_onload"
+              data-callback="handleCredentialResponse"
+              data-auto_prompt="false">
+         </div>
+         <div class="g_id_signin"
+              data-type="standard"
+              data-size="large"
+              data-theme="outline"
+              data-text="sign_in_with"
+              data-shape="rectangular"
+              data-logo_alignment="left"
+              style="display: flex; justify-content: center; margin-bottom: 1rem;">
+         </div>
+         <p id="auth-message" style="color: #f87171; font-size: 0.9rem; display: none;"></p>
+         <button id="logout-btn" class="btn-secondary-sm" style="display:none; margin-top:1rem;">Logout</button>
+      </div>
+
       <div id="resources-grid" class="resources-grid reveal-stagger"></div>
     </section>
 
@@ -169,39 +194,169 @@
       // ── Render resources via SheetSync (falls back to data.js automatically) ──
       document.addEventListener("DOMContentLoaded", function () {
         var grid = document.getElementById("resources-grid");
+        var authContainer = document.getElementById("auth-container");
+        var logoutBtn = document.getElementById("logout-btn");
+        var authMessage = document.getElementById("auth-message");
         if (!grid) return;
 
-        grid.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading resources...</p>';
+        // Check if approval is required
+        var requireApproval = (typeof SHEETS_CONFIG !== "undefined" && SHEETS_CONFIG.requireApproval);
 
-        window.SheetSync.load("resources", function (resources) {
-          if (!resources || resources.length === 0) {
-            grid.innerHTML =
-              '<div style="text-align:center;padding:3rem 1rem;">' +
-              '<i class="fa-regular fa-folder-open" style="font-size:3rem;opacity:0.3;margin-bottom:1rem;display:block;"></i>' +
-              '<p style="opacity:0.6;font-size:1.1rem;">No resources uploaded yet.</p>' +
-              '<p style="opacity:0.4;font-size:0.85rem;margin-top:0.5rem;">Workshop notes and guides will appear here when available.</p>' +
-              '</div>';
-            return;
+        if (requireApproval) {
+          // Set Client ID for Google Identity
+          var gIdOnload = document.getElementById("g_id_onload");
+          if (gIdOnload && SHEETS_CONFIG.googleClientId) {
+             gIdOnload.setAttribute("data-client_id", SHEETS_CONFIG.googleClientId);
           }
+          
+          var sid = localStorage.getItem("club_session");
+          if (!sid) {
+             // Not logged in -> Show Auth container, hide grid
+             authContainer.style.display = "block";
+             grid.style.display = "none";
+             return;
+          } else {
+             // Logged in -> show logout option, hide google sign-in button
+             authContainer.style.display = "block";
+             document.querySelector(".g_id_signin").style.display = "none";
+             document.getElementById("g_id_onload").style.display = "none";
+             logoutBtn.style.display = "inline-block";
+             authContainer.querySelector("h3").innerText = "Loading Resources...";
+             authContainer.querySelector("p").innerText = "Verifying session...";
+          }
+        }
 
-          grid.innerHTML = resources
-            .map(function (r) {
-              return (
-                '<div class="resource-card glass-panel">' +
-                '<div class="resource-icon"><i class="' + (r.icon || "fa-solid fa-file") + '"></i></div>' +
-                '<div class="resource-info">' +
-                "<h4>" + (r.title || "Untitled Resource") + "</h4>" +
-                "<p>" + (r.description || "") + "</p>" +
-                "</div>" +
-                (r.downloadLink && r.downloadLink !== "#" && r.downloadLink.trim() !== ""
-                  ? '<a href="' + r.downloadLink + '" target="_blank" class="btn-icon-link"><i class="fa-solid fa-download"></i></a>'
-                  : '<span class="btn-icon-link" style="opacity:0.3;cursor:default;"><i class="fa-solid fa-clock"></i></span>') +
-                "</div>"
-              );
-            })
-            .join("");
-        });
+        loadResources();
+
+        function loadResources() {
+          grid.innerHTML = '<p style="text-align:center;opacity:0.5;">Loading resources...</p>';
+          window.SheetSync.load("resources", function (resources) {
+            // Handle unauthorized error from Apps Script (it might return an error object)
+            if (resources && resources.error) {
+               if (requireApproval) {
+                  localStorage.removeItem("club_session");
+                  authContainer.querySelector("h3").innerText = "Protected Content";
+                  authContainer.querySelector("p").innerText = "You need to be an approved member to access club resources.";
+                  document.querySelector(".g_id_signin").style.display = "flex";
+                  logoutBtn.style.display = "none";
+                  authMessage.innerText = resources.error;
+                  authMessage.style.display = "block";
+                  grid.style.display = "none";
+               }
+               return;
+            }
+
+            if (requireApproval) {
+               authContainer.style.display = "none";
+               grid.style.display = "grid"; // or block depending on css
+               
+               // Optionally add a logout button somewhere in the page header
+               var header = document.querySelector(".section-header");
+               if (header && !document.getElementById("top-logout-btn")) {
+                 var btn = document.createElement("button");
+                 btn.id = "top-logout-btn";
+                 btn.className = "btn-secondary-sm";
+                 btn.style.marginTop = "1rem";
+                 btn.innerText = "Logout";
+                 btn.onclick = function() {
+                    localStorage.removeItem("club_session");
+                    window.location.reload();
+                 };
+                 header.appendChild(btn);
+               }
+            }
+
+            if (!resources || resources.length === 0) {
+              grid.innerHTML =
+                '<div style="text-align:center;padding:3rem 1rem;">' +
+                '<i class="fa-regular fa-folder-open" style="font-size:3rem;opacity:0.3;margin-bottom:1rem;display:block;"></i>' +
+                '<p style="opacity:0.6;font-size:1.1rem;">No resources uploaded yet.</p>' +
+                '<p style="opacity:0.4;font-size:0.85rem;margin-top:0.5rem;">Workshop notes and guides will appear here when available.</p>' +
+                '</div>';
+              return;
+            }
+
+            grid.innerHTML = resources
+              .map(function (r) {
+                return (
+                  '<div class="resource-card glass-panel">' +
+                  '<div class="resource-icon"><i class="' + (r.icon || "fa-solid fa-file") + '"></i></div>' +
+                  '<div class="resource-info">' +
+                  "<h4>" + (r.title || "Untitled Resource") + "</h4>" +
+                  "<p>" + (r.description || "") + "</p>" +
+                  "</div>" +
+                  (r.downloadLink && r.downloadLink !== "#" && r.downloadLink.trim() !== ""
+                    ? '<a href="' + r.downloadLink + '" target="_blank" class="btn-icon-link"><i class="fa-solid fa-download"></i></a>'
+                    : '<span class="btn-icon-link" style="opacity:0.3;cursor:default;"><i class="fa-solid fa-clock"></i></span>') +
+                  "</div>"
+                );
+              })
+              .join("");
+          });
+        }
+        
+        // Handle Logout
+        if (logoutBtn) {
+           logoutBtn.onclick = function() {
+              localStorage.removeItem("club_session");
+              window.location.reload();
+           };
+        }
       });
+
+      // Handle Google Sign-In response
+      function handleCredentialResponse(response) {
+         var authMessage = document.getElementById("auth-message");
+         authMessage.style.display = "none";
+         document.querySelector(".g_id_signin").style.display = "none";
+         document.querySelector("#auth-container p").innerText = "Verifying with server...";
+
+         if (typeof SHEETS_CONFIG !== "undefined" && SHEETS_CONFIG.scriptUrl && SHEETS_CONFIG.scriptUrl !== "YOUR-SCRIPT-URL") {
+             fetch(SHEETS_CONFIG.scriptUrl, {
+                 method: 'POST',
+                 mode: 'no-cors', // Because we use no-cors to avoid preflight issues, we have to parse from a redirect or use a hack.
+                 // Wait, no-cors means we can't read the response payload securely in browser. 
+                 // Apps Script requires follow redirects to get the payload, or JSONP, or CORS enabled.
+                 // We will send POST without no-cors. GAS supports CORS if returning ContentService correctly.
+                 // To avoid preflight OPTIONS error, we use Content-Type: text/plain
+                 body: JSON.stringify({ action: "verifyLogin", idToken: response.credential }),
+                 headers: { 'Content-Type': 'text/plain' }
+             })
+             .then(res => res.json())
+             .then(data => {
+                 if (data.success && data.sessionId) {
+                     localStorage.setItem("club_session", data.sessionId);
+                     window.location.reload();
+                 } else {
+                     showAuthError(data.message || "Approval denied.");
+                 }
+             })
+             .catch(err => {
+                 // Fallback to JSONP or GET if POST CORS fails
+                 // Let's use GET since GAS handles CORS better with GET
+                 fetch(SHEETS_CONFIG.scriptUrl + "?action=verifyLogin&idToken=" + response.credential)
+                   .then(res => res.json())
+                   .then(data => {
+                       if (data.success && data.sessionId) {
+                           localStorage.setItem("club_session", data.sessionId);
+                           window.location.reload();
+                       } else {
+                           showAuthError(data.message || "Approval denied.");
+                       }
+                   }).catch(e => {
+                       showAuthError("Server error. Please try again.");
+                   });
+             });
+         }
+      }
+
+      function showAuthError(msg) {
+         var authMessage = document.getElementById("auth-message");
+         authMessage.innerText = msg;
+         authMessage.style.display = "block";
+         document.querySelector(".g_id_signin").style.display = "flex";
+         document.querySelector("#auth-container p").innerText = "You need to be an approved member to access club resources.";
+      }
     </script>
     <script src="js/script.js"></script>
   </body>

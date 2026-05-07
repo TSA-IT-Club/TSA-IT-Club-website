@@ -105,6 +105,10 @@
     }
 
     var url = cfg.scriptUrl + "?sheet=" + tabName(section);
+    if (section === "resources" && cfg.requireApproval) {
+      var sid = localStorage.getItem("club_session");
+      if (sid) url += "&sid=" + encodeURIComponent(sid);
+    }
     var cacheKey = "tsa_sheets_cache_" + section;
 
     // 1. Immediately fire callback with cached data if it exists

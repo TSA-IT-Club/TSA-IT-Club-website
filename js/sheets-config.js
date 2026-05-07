@@ -23,11 +23,35 @@
  * ============================================================
  */
 
+// AKfycbyDAgQQBeiRQckSjb3EpSprlNiIhG7PjPAQJkQJmXbPxZNdvMQClQRbKjDkfDmzwM9Fnw
+
 const SHEETS_CONFIG = {
   // ── Change to true after pasting your URL below ──
   enabled: true,
 
   // ── Paste your Google Apps Script Web App URL here ──
   // It looks like: https://script.google.com/macros/s/AKfycb.../exec
-  scriptUrl: "https://script.google.com/macros/s/AKfycbxkdSPWgei1gOS_fyTl4zx-5N9i_YSgGDQ7BZJ13CGTiNI2esJZTX-TQtB9uNFsp1UXkg/exec",
+  scriptUrl:
+    "https://script.google.com/macros/s/AKfycbyDAgQQBeiRQckSjb3EpSprlNiIhG7PjPAQJkQJmXbPxZNdvMQClQRbKjDkfDmzwM9Fnw/exec",
+
+  // ── Toggle for Resources Page Approval ──
+  // - false → Resources page loads normally without login
+  // - true  → Users must log in via Google and be approved in Google Sheets
+  requireApproval: true,
+
+  // ── Google OAuth Client ID ──
+  // Required if requireApproval is true. Create one at console.cloud.google.com
+  googleClientId:
+    "104711217148-7tqvgjvaq2sg86gem5h8tsn29kqv2jp0.apps.googleusercontent.com",
 };
+
+// {
+//   "timeZone": "Asia/Kathmandu",
+//   "dependencies": {},
+//   "exceptionLogging": "STACKDRIVER",
+//   "runtimeVersion": "V8",
+//   "webapp": {
+//     "executeAs": "USER_DEPLOYING",
+//     "access": "ANYONE_ANONYMOUS"
+//   }
+// }

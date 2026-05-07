@@ -29,6 +29,7 @@
 | `Resources` | ✅                 |
 | `Team`      | ✅                 |
 | `Legacy`    | ✅                 |
+| `Members`   | ✅                 |
 
 ### Add column headers — Row 1 of each tab:
 
@@ -79,6 +80,17 @@ name	role	type	En-year	Np-year	avatarInitial	gradient	image	linkedin	github	emai
 > `En-year`: e.g. `2024`
 > `Np-year`: e.g. `2079`
 
+**Members:**
+
+```
+timestamp	name	email	phone	role	skills	about	approved	avatarInitial
+```
+
+> `approved`: This column is used to manually approve members (set to `TRUE` or `FALSE`). Only approved members can access the protected Resources page.
+> **Conditional Formatting Tip:** You can set rules on the `approved` column to make it visually clear: 
+> * If text is exactly `TRUE` → set background to Light Blue.
+> * If text is exactly `FALSE` → set background to Light Coral.
+
 ---
 
 ## Step 2 — Add the Apps Script
@@ -89,71 +101,166 @@ name	role	type	En-year	Np-year	avatarInitial	gradient	image	linkedin	github	emai
 
 ```javascript
 function doGet(e) {
-  var sheetName = e.parameter.sheet;
-  if (!sheetName) {
-    return respond({ error: "Missing ?sheet= parameter" });
+  var action = e.parameter.action;
+  
+  if (action === 'verifyLogin') {
+    var idToken = e.parameter.idToken;
+    var result = verifyLoginToken(idToken);
+    return respond(result);
   }
+
+  var sheetName = e.parameter.sheet;
+  if (!sheetName) return respond({ error: "Missing ?sheet= parameter" });
+  
+  var sid = e.parameter.sid;
+  if (sheetName === 'Resources') {
+    if (!sid || !validateSession(sid)) {
+      return respond({ error: "Unauthorized or session expired." });
+    }
+  }
+
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName(sheetName);
-  if (!sheet) {
-    return respond([]);
-  }
+  if (!sheet) return respond([]);
   var rows = sheet.getDataRange().getValues();
   if (rows.length < 2) return respond([]);
   var headers = rows.shift();
-  var data = rows
-    .map(function (row) {
-      var obj = {};
-      headers.forEach(function (h, i) {
-        obj[h] = row[i];
-      });
-      return obj;
-    })
-    .filter(function (obj) {
-      // Skip completely empty rows
-      return headers.some(function (h) {
-        return obj[h] !== "" && obj[h] !== null && obj[h] !== undefined;
-      });
-    });
+  var data = rows.map(function(row) {
+    var obj = {};
+    headers.forEach(function(h,i){ obj[h]=row[i]; });
+    return obj;
+  }).filter(function(obj){
+    return headers.some(function(h){ return obj[h]!=="" && obj[h]!==null && obj[h]!==undefined; });
+  });
   return respond(data);
 }
 
 function doPost(e) {
   try {
     var payload = JSON.parse(e.postData.contents);
+    
+    // Login Verification via POST
+    if (payload.action === 'verifyLogin') {
+       var result = verifyLoginToken(payload.idToken);
+       return respond(result);
+    }
+    
     var sheetName = payload.sheet;
     var data = payload.data;
+    
+    // Security check for the Members tab
+    var secretToken = "TSA_CLUB_SECRET_2026";
+    if (sheetName === "Members" && payload.token !== secretToken) {
+      return respond({ error: "Unauthorized: Invalid token" });
+    }
+    
     if (!sheetName || !data) return respond({ error: "Bad payload" });
-
+    
+    // Fix: Allow both object and array for 'data' parameter to keep Append operations simple
+    var isArrayData = Array.isArray(data);
+    var rowsData = isArrayData ? data : [data];
+    if (rowsData.length === 0) return respond({ error: "Empty data" });
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var sheet = ss.getSheetByName(sheetName);
     if (!sheet) return respond({ error: "Sheet not found: " + sheetName });
-
-    // Clear all rows below header
-    var lastRow = sheet.getLastRow();
-    if (lastRow > 1) sheet.deleteRows(2, lastRow - 1);
-
-    if (data.length > 0) {
-      var headers = sheet
-        .getRange(1, 1, 1, sheet.getLastColumn())
-        .getValues()[0];
-      var rows = data.map(function (item) {
-        return headers.map(function (h) {
+    
+    if (sheetName === "Members") {
+      // Append only
+      var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+      
+      rowsData.forEach(function(item) {
+        var newRow = headers.map(function(h) {
+          if (h === "timestamp") return new Date();
+          if (h === "approved") return false;
+          if (h === "type") return "member";
           return item[h] !== undefined ? item[h] : "";
         });
+        sheet.appendRow(newRow);
+      });
+      return respond({ success: true, written: rowsData.length });
+    } else {
+      // Clear all rows below header and Overwrite (Original logic for other tabs)
+      var lastRow = sheet.getLastRow();
+      if (lastRow > 1) sheet.deleteRows(2, lastRow - 1);
+      
+      var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+      var rows = rowsData.map(function(item){
+        return headers.map(function(h){ return item[h] !== undefined ? item[h] : ""; });
       });
       sheet.getRange(2, 1, rows.length, headers.length).setValues(rows);
+      
+      return respond({ success: true, written: rowsData.length });
     }
-    return respond({ success: true, written: data.length });
-  } catch (err) {
+  } catch(err) {
     return respond({ error: err.toString() });
   }
 }
 
 function respond(obj) {
-  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(
-    ContentService.MimeType.JSON,
-  );
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+}
+
+// Validates the Google ID token and checks if the user is approved
+function verifyLoginToken(idToken) {
+  try {
+    var response = UrlFetchApp.fetch('https://oauth2.googleapis.com/tokeninfo?id_token=' + idToken);
+    var payload = JSON.parse(response.getContentText());
+    var email = payload.email;
+    
+    if (!email) return { success: false, message: "Invalid Google token." };
+
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Members");
+    if (!sheet) return { success: false, message: "Members sheet not found." };
+    
+    var data = sheet.getDataRange().getValues();
+    var headers = data[0].map(function(h) { return h.toString().toLowerCase(); });
+    var emailColIndex = headers.indexOf("email");
+    var approvedColIndex = headers.indexOf("approved");
+    
+    if (emailColIndex === -1 || approvedColIndex === -1) {
+       return { success: false, message: "Missing email or approved column in Members sheet." };
+    }
+
+    var userFound = false;
+    var isApproved = false;
+
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][emailColIndex] === email) {
+        userFound = true;
+        if (data[i][approvedColIndex] === true || String(data[i][approvedColIndex]).toUpperCase() === 'TRUE') {
+          isApproved = true;
+        }
+        break;
+      }
+    }
+
+    if (!userFound) return { success: false, message: "No access request found for " + email + ". Please apply via the Join Us form." };
+    if (!isApproved) return { success: false, message: "Your account is pending approval by the admin." };
+
+    var sessionId = Utilities.getUuid();
+    var props = PropertiesService.getScriptProperties();
+    props.setProperty("session_" + sessionId, JSON.stringify({
+      email: email,
+      expires: Date.now() + (7 * 24 * 60 * 60 * 1000)
+    }));
+
+    return { success: true, sessionId: sessionId };
+  } catch (err) {
+    return { success: false, message: "Server error: " + err.message };
+  }
+}
+
+// Validates an existing session ID
+function validateSession(sessionId) {
+  var props = PropertiesService.getScriptProperties();
+  var sessionStr = props.getProperty("session_" + sessionId);
+  if (!sessionStr) return false;
+  var session = JSON.parse(sessionStr);
+  if (Date.now() > session.expires) {
+    props.deleteProperty("session_" + sessionId);
+    return false;
+  }
+  return true;
 }
 ```
 
